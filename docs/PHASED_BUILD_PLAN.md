@@ -6,11 +6,9 @@ This file tells future AI sessions where to start, where to stop, and what evide
 
 ## Current Phase
 
-Current recommended phase: **Phase 1 - Shield protocol design and local proof**.
+Current recommended phase: **Phase 4 - media/CDN local stubs**, still no public uploads.
 
-Phase 0 is sufficiently complete for the public proof: domain, static site, GitHub repo, Cloudflare Pages deployment, core docs, security policy, and the Voxon Shield architecture RFC exist.
-
-Do not start a real EverCommons backend or media upload path before the Shield trust boundary and media/CDN boundary are specified and locally demonstrated.
+Phase 3 clickable UX exists at `evercommons/prototype/`. Phase 1–2 Shield work remains mock-only. Recovery after device loss is not implemented.
 
 ## Phase Rules
 
@@ -53,7 +51,7 @@ Evidence:
 
 ## Phase 1: Shield Protocol Design and Local Proof
 
-Status: next.
+Status: local proof complete; still mock-only.
 
 Start condition:
 
@@ -80,13 +78,14 @@ Stop gate:
 Evidence:
 
 - `docs/RFC-0002-VOXON-SHIELD.md` updated.
-- Assertion schema doc or code.
-- Local tests passing.
-- Handoff note explaining exactly what is still mock-only.
+- `shield/schema/assertion.schema.json`
+- `shield/src/issuer.js` and `shield/src/verifier.js`
+- `cd shield && npm test` passing.
+- `shield/README.md` handoff listing exactly what is still mock-only.
 
 ## Phase 2: Shield Authentication Prototype
 
-Status: blocked until Phase 1 stop gate passes.
+Status: local passkey prototype complete; recovery not implemented.
 
 Work scope:
 
@@ -101,9 +100,16 @@ Stop gate:
 - No password-first system is introduced without explicit approval.
 - Recovery, device loss, session expiry, CSRF, and origin-bound assumptions are documented.
 
+Evidence:
+
+- `shield/src/passkeys/` localhost server using SimpleWebAuthn 13.x.
+- `shield/docs/PASSKEY_THREAT_MODEL.md`
+- `cd shield && npm test` includes origin, CSRF, session, and assertion-separation cases.
+- `/api/recovery` returns 501 on purpose.
+
 ## Phase 3: EverCommons UX Prototype
 
-Status: blocked until Phase 1 is demonstrated.
+Status: local clickable prototype complete. No real accounts or uploads.
 
 Work scope:
 
@@ -119,9 +125,15 @@ Stop gate:
 - Privacy and safety copy is clear.
 - Users cannot upload real content or create production accounts.
 
+Evidence:
+
+- `evercommons/prototype/`
+- `node --test evercommons/prototype/check.test.js`
+- Upload control is disabled; no email/password fields.
+
 ## Phase 4: Media and CDN Security Architecture
 
-Status: blocked until Phase 1 is demonstrated.
+Status: RFC exists. Next work is threat-model detail and local stubs, not public uploads.
 
 Work scope:
 

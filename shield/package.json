@@ -1,0 +1,20 @@
+{
+  "name": "@voxonlabs/shield-local-proof",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Local mock-only Voxon Shield issuer and verifier. Not a production identity system.",
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "demo": "node src/cli.js demo",
+    "passkeys": "node src/passkeys/server.js"
+  },
+  "dependencies": {
+    "@simplewebauthn/browser": "13.3.0",
+    "@simplewebauthn/server": "13.3.2",
+    "jose": "6.2.9"
+  }
+}

@@ -54,6 +54,36 @@ verification-provider packet
 
 If the application cannot leak those fields, the privacy boundary is much stronger than a policy promise.
 
+## Local proof status
+
+A mock-only local issuer and verifier now exist in `shield/`. This is Phase 1 evidence, not a production identity system.
+
+Run:
+
+```bash
+cd shield
+npm install
+npm test
+```
+
+The local proof:
+
+- Signs compact JWTs with ES256 using the maintained `jose` library.
+- Uses `typ: voxon-shield+jwt` (RFC 8725 explicit typing).
+- Binds keys to issuer `https://shield.voxonlabs.com`. That string is a token name, not a live API.
+- Issues pairwise `sub` values per audience.
+- Rejects wrong issuer, wrong audience, expiry, bad signature, `alg: none`, unknown `kid`, `jku`/`jwk` headers, and forbidden identity fields.
+
+It does not:
+
+- Talk to an identity provider.
+- Serve production HTTP, JWKS, or `/.well-known` endpoints.
+- Issue production keys.
+- Implement revocation, attestation policy, or uniqueness/"one human".
+- Implement device-loss recovery. `/api/recovery` returns 501.
+
+A localhost passkey prototype now exists at `shield/src/passkeys/`. Login and Shield assertions are separate HTTP steps. See `shield/docs/PASSKEY_THREAT_MODEL.md`.
+
 ## High-Level Architecture
 
 ```text
@@ -288,6 +318,85 @@ The Shield design should publish:
 
 The protocol should be open enough that researchers can inspect what applications receive and what Shield refuses to disclose.
 
+## Assertion schema
+
+The JWT Claims Set schema is `shield/schema/assertion.schema.json`.
+
+Required registered claims (RFC 7519):
+
+```text
+iss   Shield issuer identifier
+aud   single application audience
+sub   pairwise ppid_ subject for that audience
+iat   issued-at, Unix seconds
+exp   expiry, Unix seconds, at most 300 seconds after iat
+jti   unique assertion id
+```
+
+Required derived claims, nested under `claims` so they cannot be confused with identity attributes:
+
+```text
+verified_human
+age_over_18
+account_eligible
+```
+
+All three are booleans. `false` is a valid assertion; EverCommons adult policy then denies access.
+
+JWS protected header:
+
+```text
+alg   ES256 only
+kid   required, used to select a JWKS key
+typ   voxon-shield+jwt
+```
+
+`jku`, `x5u`, `jwk`, and `x5c` are forbidden. Verifiers must use a JWKS they already associate with the issuer (RFC 8725 §3.10).
+
+### Forbidden application fields
+
+The verifier rejects these names anywhere in the payload, even when the signature is valid:
+
+```text
+name, given_name, family_name, middle_name, nickname
+date_of_birth, birthdate, dob
+passport_number, document_number
+address, email, phone_number, picture
+document_image, selfie, provider_packet
+other_apps_used, global_trust_score, trust_score
+```
+
+Unexpected top-level keys and unexpected keys under `claims` are also rejected. `additionalProperties` is false in the schema.
+
+### Key rotation assumptions
+
+This follows RFC 7517 JWKS overlap, not a custom crypto scheme:
+
+1. Generate a new ES256 key pair.
+2. Publish the new public key in JWKS before signing with it.
+3. Start signing new assertions with the new `kid`.
+4. Keep the previous public key in JWKS until every assertion signed with it has expired (local max TTL is 300 seconds).
+5. Retire the old key. Unknown `kid` values must fail.
+
+The local mock keeps current and previous keys in memory. There is no remote JWKS cache, overlap calendar, or incident-rotation runbook yet.
+
+### Pairwise pseudonyms
+
+OpenID Connect Core 1.0 §8.1 requires a subject that is unique per sector, deterministic, and not reversible except by the issuer.
+
+The local mock uses example method 1 from that section:
+
+```text
+sub = "ppid_" || base64url(SHA-256(audience || local_account_id || salt))
+```
+
+Assumptions and limits:
+
+- The sector identifier is the application audience (`evercommons`, `dating`, ...). Production OIDC uses the redirect URI host or `sector_identifier_uri`.
+- The salt never leaves Shield. Applications only see the digest.
+- Naive concatenation can collide across encoded pairs. This mock only proves different apps receive different subjects.
+- This is not a uniqueness or Sybil-resistance design.
+
 ## Minimal API Shape
 
 This is illustrative, not an implementation commitment.
@@ -325,11 +434,11 @@ GET /jwks.json
 
 ## MVP Build Order
 
-1. Publish this architecture RFC and invite privacy/security review.
-2. Draft the assertion schema and forbidden-claims list.
-3. Build a local mock issuer that signs test assertions for EverCommons.
-4. Build an EverCommons verifier example that accepts only the right issuer, audience, signature, expiry, and claims.
-5. Add a passkey/WebAuthn prototype for returning users.
+1. Publish this architecture RFC and invite privacy/security review. Done as a draft RFC.
+2. Draft the assertion schema and forbidden-claims list. Done: `shield/schema/assertion.schema.json`.
+3. Build a local mock issuer that signs test assertions for EverCommons. Done: `shield/src/issuer.js`. Mock-only.
+4. Build an EverCommons verifier example that accepts only the right issuer, audience, signature, expiry, and claims. Done: `shield/src/verifier.js` plus `shield/test/local-proof.test.js`.
+5. Add a passkey/WebAuthn prototype for returning users. Done as localhost-only: `cd shield && npm run passkeys`. Recovery is not implemented and needs a high-reasoning review.
 6. Define provider-adapter interfaces without choosing a paid provider.
 7. Write a data-retention and logging threat model.
 8. Review the uniqueness problem separately before promising "one human" at scale.
@@ -345,9 +454,14 @@ GET /jwks.json
 
 ## Standards References
 
+- RFC 7519 JSON Web Token (JWT): https://www.rfc-editor.org/rfc/rfc7519
+- RFC 7517 JSON Web Key (JWK): https://www.rfc-editor.org/rfc/rfc7517
+- RFC 8725 JSON Web Token Best Current Practices: https://www.rfc-editor.org/rfc/rfc8725
+- OpenID Connect Core 1.0 incorporating errata set 2, Section 8.1 Pairwise Identifier Algorithm: https://openid.net/specs/openid-connect-core-1_0.html#PairwiseAlg
 - NIST SP 800-63-4 Digital Identity Guidelines, final publication dated August 1, 2025: https://www.nist.gov/publications/nist-sp-800-63-4-digital-identity-guidelines
 - NIST SP 800-63-4 online glossary for derived attribute values, including "older than 18": https://pages.nist.gov/800-63-4/sp800-63.html
 - W3C WebAuthn Level 3 publication history, Candidate Recommendation Snapshot dated May 26, 2026: https://www.w3.org/standards/history/webauthn-3/
 - W3C Verifiable Credentials 2.0 Recommendation announcement dated May 15, 2025: https://www.w3.org/news/2025/the-verifiable-credentials-2-0-family-of-specifications-is-now-a-w3c-recommendation/
 - OpenID for Verifiable Presentations 1.0, final specification dated July 9, 2025: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
 - SD-JWT VC draft-ietf-oauth-sd-jwt-vc-17, active Internet-Draft dated July 6, 2026: https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-17
+- jose 6.2.9 (JWT/JWS/JWKS library used by the local proof): https://www.npmjs.com/package/jose/v/6.2.9

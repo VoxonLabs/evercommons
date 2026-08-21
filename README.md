@@ -19,6 +19,7 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 
 - `AGENTS.md` - required operating protocol for future AI coding sessions.
 - `evercommons/` - static EverCommons campaign site; no build step, backend, or paid service required.
+- `evercommons/prototype/` - clickable Social UX shell. No real accounts or uploads.
 - `index.html` - VoxonLabs parent homepage.
 - `join.html` - public intake page for contributors, creators, organizations, universities and reviewers.
 - `support.html` - support and future donation-readiness page.
@@ -28,6 +29,7 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 - `docs/PARTNER_CHARTER.md` - rules for sponsors, infrastructure providers, and partners.
 - `docs/RFC-0001-MVP.md` - first product scope and exclusions.
 - `docs/RFC-0002-VOXON-SHIELD.md` - first architecture for the reusable Shield assertion layer.
+- `shield/` - local mock-only Shield issuer, verifier, assertion schema, and tests. Not a production identity system.
 - `docs/RFC-0003-MEDIA-CDN-SECURITY.md` - media upload, processing, storage, CDN, moderation, and cost-abuse architecture.
 - `docs/PHASED_BUILD_PLAN.md` - start/stop roadmap for future work.
 - `docs/ENGINEERING_SECURITY_BASELINE.md` - security, privacy, UX, dependency, and deployment baseline.
@@ -60,7 +62,25 @@ Then visit:
 
 ```text
 http://127.0.0.1:8080/evercommons/
+http://127.0.0.1:8080/evercommons/prototype/
 ```
+
+The Shield local proof is separate:
+
+```bash
+cd shield
+npm install
+npm test
+```
+
+Passkey localhost demo:
+
+```bash
+cd shield
+npm run passkeys
+```
+
+Then open `http://localhost:8787`. Do not expose that server.
 
 ## Future AI Sessions
 
@@ -108,4 +128,4 @@ If the repository is published under another owner or name, update the links in 
 
 ## Current status
 
-Pre-alpha public proof. No user accounts, no public uploads, no ads, no payouts, no identity provider, and no foundation entity yet.
+Pre-alpha public proof. No user accounts, no public uploads, no ads, no payouts, no identity provider, and no foundation entity yet. A local mock Shield issuer/verifier and a localhost passkey prototype exist in `shield/`. A clickable EverCommons UX shell exists at `evercommons/prototype/`. Recovery after device loss is not implemented.

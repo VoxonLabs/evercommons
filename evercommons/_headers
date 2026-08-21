@@ -10,3 +10,9 @@
 
 /styles.css
   Cache-Control: public, max-age=3600
+
+/prototype/app.js
+  Cache-Control: public, max-age=3600
+
+/prototype/styles.css
+  Cache-Control: public, max-age=3600

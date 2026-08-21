@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://voxonlabs.com/schema/shield-assertion.json",
+  "title": "Voxon Shield application assertion",
+  "description": "JWT Claims Set for a mock-only local Shield assertion. Applications receive derived booleans only. This is not a production identity credential.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["iss", "aud", "sub", "iat", "exp", "jti", "claims"],
+  "properties": {
+    "iss": {
+      "type": "string",
+      "format": "uri",
+      "description": "Shield issuer identifier. Verifiers must match this exactly and bind verification keys to it."
+    },
+    "aud": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Single application audience. An EverCommons assertion must not verify for another app."
+    },
+    "sub": {
+      "type": "string",
+      "pattern": "^ppid_[A-Za-z0-9_-]+$",
+      "description": "Pairwise pseudonymous subject for this audience. Must not be a name, email, or shared cross-app identifier."
+    },
+    "iat": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Issued-at time as seconds since Unix epoch (RFC 7519)."
+    },
+    "nbf": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Optional not-before time as seconds since Unix epoch (RFC 7519)."
+    },
+    "exp": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Expiration time as seconds since Unix epoch. Must be after iat and within the max TTL."
+    },
+    "jti": {
+      "type": "string",
+      "minLength": 16,
+      "description": "Unique assertion id (RFC 7519). Local mock uses a UUID."
+    },
+    "claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verified_human", "age_over_18", "account_eligible"],
+      "properties": {
+        "verified_human": { "type": "boolean" },
+        "age_over_18": { "type": "boolean" },
+        "account_eligible": { "type": "boolean" }
+      }
+    }
+  }
+}

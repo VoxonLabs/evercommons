@@ -5,12 +5,13 @@ EverCommons is pre-alpha. The useful contribution style right now is small, fini
 ## Good First Contributions
 
 - Review the founding charter for unclear commitments.
-- Review `docs/RFC-0002-VOXON-SHIELD.md` for identity, authentication, pseudonymity, and safety risks.
+- Review `docs/RFC-0002-VOXON-SHIELD.md` and the local proof in `shield/` for identity, authentication, pseudonymity, and safety risks.
+- Run `cd shield && npm test` after assertion-schema changes.
 - Improve the static site for accessibility, responsive layout, or copy clarity.
 - Draft issue templates for creator interviews, infrastructure requests, and privacy review.
 - Create a threat-model checklist for signed uploads and quota abuse.
 - Translate public-facing copy with terminology notes.
-- Prototype one flow: onboarding, feed, upload, creator dashboard, report/appeal, or "why this ad".
+- Prototype one flow: onboarding, feed, upload stub, creator dashboard, report/appeal, or "why this ad" in `evercommons/prototype/`.
 
 ## Working Rules
 

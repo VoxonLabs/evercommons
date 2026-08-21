@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Voxon Shield local passkey prototype</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #14211f;
+        --muted: #3d4f4b;
+        --bg: #f4f1ea;
+        --card: #fffdf8;
+        --line: #d7cfc2;
+        --accent: #1f7a5b;
+        --danger: #8a2f28;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.45;
+      }
+      main {
+        max-width: 42rem;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 3rem;
+      }
+      h1 { font-size: 1.6rem; margin: 0 0 0.4rem; }
+      p { margin: 0.6rem 0; color: var(--muted); }
+      .banner {
+        background: #f8e8d8;
+        border: 1px solid var(--line);
+        padding: 0.75rem 1rem;
+        margin: 1rem 0;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        margin: 1rem 0;
+      }
+      button {
+        min-height: 2.75rem;
+        padding: 0.5rem 0.9rem;
+        border: 1px solid var(--ink);
+        background: var(--card);
+        color: var(--ink);
+        font: inherit;
+        cursor: pointer;
+      }
+      button:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+      }
+      button.primary {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+      }
+      pre {
+        background: var(--card);
+        border: 1px solid var(--line);
+        padding: 0.9rem;
+        overflow: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .status[data-kind="error"] { color: var(--danger); }
+      .status[data-kind="ok"] { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Local passkey prototype</h1>
+      <p>
+        This page is a localhost-only Shield authentication sandbox. It is not a public
+        account system. Login proves continuity of a local handle. A Shield assertion is a
+        separate yes/no token and is not minted by logging in.
+      </p>
+      <p class="banner" role="note">
+        Recovery after device loss is not implemented. That is the hard part and needs a
+        high-reasoning security review before any public use.
+      </p>
+      <div class="row">
+        <button class="primary" id="register" type="button">Create handle and register passkey</button>
+        <button id="login" type="button">Sign in with passkey</button>
+        <button id="assert" type="button">Request Shield assertion</button>
+        <button id="logout" type="button">Sign out</button>
+        <button id="recovery" type="button">Try recovery</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite">Loading session…</p>
+      <h2>Current session</h2>
+      <pre id="session-view">{}</pre>
+      <h2>Last response</h2>
+      <pre id="output">{}</pre>
+    </main>
+    <script src="/vendor/simplewebauthn-browser.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

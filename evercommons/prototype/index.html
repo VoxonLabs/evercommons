@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EverCommons Social prototype</title>
+    <meta
+      name="description"
+      content="Clickable local prototype for EverCommons Social. No real accounts and no uploads."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to main content</a>
+    <div class="banner" role="status">
+      Local clickable prototype. No account is created. Files cannot be uploaded.
+    </div>
+
+    <header class="top">
+      <a class="brand" href="#/feed">
+        <span class="mark" aria-hidden="true">EC</span>
+        <span>
+          <strong>EverCommons</strong>
+          <small>Social prototype</small>
+        </span>
+      </a>
+      <p class="chip">Demo handle: local-demo</p>
+    </header>
+
+    <nav class="nav" aria-label="Prototype">
+      <a href="#/feed" data-nav="feed">Feed</a>
+      <a href="#/upload" data-nav="upload">Upload</a>
+      <a href="#/profile" data-nav="profile">Profile</a>
+      <a href="#/report" data-nav="report">Report</a>
+      <a href="#/safety" data-nav="safety">Safety</a>
+      <a href="#/creator" data-nav="creator">Creator</a>
+      <a href="#/capacity" data-nav="capacity">Capacity</a>
+    </nav>
+
+    <main id="main">
+      <section id="view-onboarding" class="view" hidden>
+        <h1>Enter as a local demo</h1>
+        <p>
+          This is a clickable product shell. It does not register you, store an email, or talk to
+          an identity provider. Passkeys live in the separate Shield localhost prototype.
+        </p>
+        <dl class="facts">
+          <div>
+            <dt>Login</dt>
+            <dd>Not collected here</dd>
+          </div>
+          <div>
+            <dt>Shield</dt>
+            <dd>Derived yes/no only</dd>
+          </div>
+          <div>
+            <dt>Uploads</dt>
+            <dd>Stubbed</dd>
+          </div>
+        </dl>
+        <aside class="panel" aria-label="Sample Shield assertion">
+          <h2>What the app is allowed to know</h2>
+          <pre>{
+  "verified_human": true,
+  "age_over_18": true,
+  "account_eligible": true
+}</pre>
+          <p>No name, date of birth, address, document, or selfie.</p>
+        </aside>
+        <a class="button primary" href="#/feed">Continue as local demo</a>
+        <p class="note">
+          Adult pilot only. No private messages. No minors. Recovery after device loss is not
+          implemented.
+        </p>
+      </section>
+
+      <section id="view-feed" class="view" hidden>
+        <h1>Feed</h1>
+        <div class="tabs" role="tablist" aria-label="Feed type">
+          <button type="button" role="tab" aria-selected="true" data-feed="following" id="tab-following">Following</button>
+          <button type="button" role="tab" aria-selected="false" data-feed="latest" id="tab-latest">Latest</button>
+          <button type="button" role="tab" aria-selected="false" data-feed="discovery" id="tab-discovery">Discovery</button>
+        </div>
+        <div id="feed-following" class="feed" role="tabpanel" aria-labelledby="tab-following"></div>
+        <div id="feed-latest" class="feed" role="tabpanel" aria-labelledby="tab-latest" hidden></div>
+        <div id="feed-discovery" class="feed" role="tabpanel" aria-labelledby="tab-discovery" hidden></div>
+      </section>
+
+      <section id="view-upload" class="view" hidden>
+        <h1>Upload</h1>
+        <p>Public uploads are closed until media, quarantine, quotas, and moderation gates exist.</p>
+        <form id="upload-form" action="#" method="post">
+          <label for="clip">Vertical clip</label>
+          <input id="clip" name="clip" type="file" accept="video/*" disabled />
+          <label class="check">
+            <input id="rights" type="checkbox" />
+            I would confirm I hold the rights, if uploads were enabled.
+          </label>
+          <button class="button primary" type="submit">Upload</button>
+        </form>
+        <p id="upload-status" class="note" role="status">Choose a file is disabled. Nothing leaves this page.</p>
+      </section>
+
+      <section id="view-profile" class="view" hidden>
+        <h1>Profile</h1>
+        <p class="lede-sm">local-demo</p>
+        <p>Sample public profile. This is not a production account.</p>
+        <dl class="facts">
+          <div>
+            <dt>Posts</dt>
+            <dd>3 sample</dd>
+          </div>
+          <div>
+            <dt>Following</dt>
+            <dd>Demo only</dd>
+          </div>
+          <div>
+            <dt>Export / delete</dt>
+            <dd>Not live</dd>
+          </div>
+        </dl>
+        <div class="row">
+          <button type="button" class="button" data-action="follow">Follow</button>
+          <button type="button" class="button" data-action="block">Block</button>
+          <button type="button" class="button" data-action="mute">Mute</button>
+        </div>
+        <p id="profile-status" class="note" role="status"></p>
+        <p class="note">Private messaging is an explicit MVP exclusion.</p>
+      </section>
+
+      <section id="view-report" class="view" hidden>
+        <h1>Report and appeal</h1>
+        <form id="report-form" action="#" method="post">
+          <fieldset>
+            <legend>Why are you reporting the sample post “Harbor walk”?</legend>
+            <label class="check"><input type="radio" name="reason" value="spam" /> Spam or scam</label>
+            <label class="check"><input type="radio" name="reason" value="harassment" /> Harassment</label>
+            <label class="check"><input type="radio" name="reason" value="explicit" /> Explicit content</label>
+            <label class="check"><input type="radio" name="reason" value="illegal" /> Illegal content</label>
+          </fieldset>
+          <button class="button primary" type="submit">Queue report</button>
+        </form>
+        <p id="report-status" class="note" role="status">Reports stay on this device for the demo. There is no moderator inbox yet.</p>
+        <form id="appeal-form" action="#" method="post">
+          <label for="appeal">Appeal a sample takedown</label>
+          <textarea id="appeal" maxlength="280" rows="4" placeholder="Why should this sample stay up?"></textarea>
+          <button class="button" type="submit">Queue appeal</button>
+        </form>
+        <p id="appeal-status" class="note" role="status"></p>
+      </section>
+
+      <section id="view-safety" class="view" hidden>
+        <h1>Safety controls</h1>
+        <fieldset>
+          <legend>Explicit content</legend>
+          <label class="check"><input type="radio" name="explicit" value="hide" checked /> Hide</label>
+          <label class="check"><input type="radio" name="explicit" value="blur" /> Blur with a warning</label>
+          <label class="check"><input type="radio" name="explicit" value="show" /> Show in this demo</label>
+        </fieldset>
+        <p class="note">Default is hide. The first pilot is adult-only and is not for minors.</p>
+        <h2>Blocks and mutes</h2>
+        <p id="lists" class="empty">No blocked or muted accounts in this demo.</p>
+      </section>
+
+      <section id="view-creator" class="view" hidden>
+        <h1>Creator dashboard</h1>
+        <p>Sample numbers. No payouts, ads billing, or tax handling is live.</p>
+        <dl class="facts">
+          <div>
+            <dt>Watches</dt>
+            <dd>1,204 sample</dd>
+          </div>
+          <div>
+            <dt>Shadow revenue</dt>
+            <dd>€0.00 (not payable)</dd>
+          </div>
+          <div>
+            <dt>Export</dt>
+            <dd>Disabled</dd>
+          </div>
+        </dl>
+        <article class="ad" aria-label="Sample sponsor card">
+          <p class="ad-label">Sponsored · contextual</p>
+          <h2>Harbor tools for small crews</h2>
+          <p>Shown because this demo feed is tagged “coastal work,” not because of a personal profile.</p>
+          <button type="button" class="button" id="why-ad">Why this ad</button>
+        </article>
+        <p id="ad-why" class="panel" hidden>
+          This card is direct-sold and contextual. It does not use a tracking pixel, a lookalike audience, or Shield identity data.
+        </p>
+      </section>
+
+      <section id="view-capacity" class="view" hidden>
+        <h1>Capacity</h1>
+        <p>Growth is gated by cost, moderation coverage, and infrastructure headroom.</p>
+        <div class="meter" aria-label="Pilot seats">
+          <div class="meter-fill"></div>
+        </div>
+        <p><strong>12 / 100</strong> sample pilot seats. Waitlist is not collecting emails here.</p>
+        <dl class="facts">
+          <div>
+            <dt>Cost / watch-minute</dt>
+            <dd>Sample €0.00</dd>
+          </div>
+          <div>
+            <dt>Upload kill switch</dt>
+            <dd>Would be off until Phase 4</dd>
+          </div>
+          <div>
+            <dt>Provider lock-in</dt>
+            <dd>None chosen</dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <footer>
+      <a href="../">Campaign site</a>
+      <span>Working name. No endorsement implied.</span>
+    </footer>
+    <noscript>
+      <p>This prototype needs JavaScript only to switch screens. No third-party scripts are used.</p>
+    </noscript>
+    <script src="./app.js"></script>
+  </body>
+</html>

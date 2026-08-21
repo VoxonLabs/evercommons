@@ -27,8 +27,10 @@ Before coding, read these files in order:
 4. docs/ENGINEERING_SECURITY_BASELINE.md
 5. docs/REPOSITORY_STRATEGY.md
 6. docs/RFC-0002-VOXON-SHIELD.md
-7. docs/RFC-0003-MEDIA-CDN-SECURITY.md if the request touches uploads, media, storage, or CDN.
-8. The specific files related to my request.
+7. shield/README.md if the request touches Shield assertions, issuer, verifier, pairwise subjects, or passkeys.
+8. shield/docs/PASSKEY_THREAT_MODEL.md if the request touches recovery, device loss, attestation, or production sessions. If the task is one of those, stop and use a high-reasoning model.
+9. docs/RFC-0003-MEDIA-CDN-SECURITY.md if the request touches uploads, media, storage, or CDN.
+10. The specific files related to my request.
 
 Your first answer must not jump directly into coding. First tell me:
 - Current phase
