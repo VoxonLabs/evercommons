@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EverCommons by VoxonLabs</title>
+    <meta
+      name="description"
+      content="EverCommons is a zero-cost public proof for a private, open, commercially sustainable digital commons."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="commons-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="EverCommons home">
+        <span class="brand-mark">EC</span>
+        <span>
+          <strong>EverCommons</strong>
+          <small>by VoxonLabs</small>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#product">Product</a>
+        <a href="#principles">Principles</a>
+        <a href="#pilot">Pilot</a>
+        <a href="#influences">Influences</a>
+        <a href="#docs">Docs</a>
+        <a class="nav-action" href="#join">Join</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">A zero-cost public proof</p>
+          <h1 id="hero-title">EverCommons</h1>
+          <p class="lede">
+            A digital ecosystem that gives back: open source, privacy-preserving, creator-aware, and built to grow only as fast as it can remain fast, safe, and faithful to the commons.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#join">Join the founding circle</a>
+            <a class="button secondary" href="../docs/RFC-0001-MVP.md">Read RFC-0001</a>
+          </div>
+        </div>
+
+        <aside class="status-panel" aria-label="Project status">
+          <div>
+            <span class="status-dot"></span>
+            <strong>Pre-alpha</strong>
+            <small>No public uploads yet</small>
+          </div>
+          <dl>
+            <div>
+              <dt>Cost rule</dt>
+              <dd>Static first</dd>
+            </div>
+            <div>
+              <dt>Growth rule</dt>
+              <dd>Capacity-gated</dd>
+            </div>
+            <div>
+              <dt>Data rule</dt>
+              <dd>No sale of people</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="band compact" id="principles" aria-labelledby="principles-title">
+        <div class="section-heading">
+          <p class="eyebrow">Non-negotiables</p>
+          <h2 id="principles-title">The operating rules come before the platform.</h2>
+        </div>
+        <div class="principle-grid">
+          <article>
+            <span>01</span>
+            <h3>Privacy for everyone</h3>
+            <p>Core privacy is not a paid upgrade. No cross-site tracking, hidden broker enrichment, or sale of personal data.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Open core</h3>
+            <p>Mission-critical software, schemas, and protocols stay inspectable, forkable, and governed in public.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Transparent money</h3>
+            <p>Creator, contributor, infrastructure, safety, reserve, and public-benefit pools use published formulas.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>No lock-in</h3>
+            <p>Users can export data. Providers are replaceable. No sponsor buys the social graph or recommendation policy.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band product" id="product" aria-labelledby="product-title">
+        <div class="section-heading">
+          <p class="eyebrow">First product concept</p>
+          <h2 id="product-title">EverCommons Social is the open photo and video network we start with.</h2>
+          <p>
+            The first product is an open-source, privacy-preserving social app for profiles, posts, short video, creator pages, following feeds, and transparent discovery. It solves the familiar photo/video social use case without surveillance ads, hidden ranking, or lock-in.
+          </p>
+        </div>
+        <div class="standard-grid" aria-label="EverCommons Social standards">
+          <article>
+            <strong>Real people, less spam</strong>
+            <p>Identity and abuse controls should reduce bots, scams, impersonation, and mass manipulation without turning ordinary users into surveillance targets.</p>
+          </article>
+          <article>
+            <strong>Family-safe defaults</strong>
+            <p>Explicit content controls, reporting, appeals, and age-aware design are built into the product plan before public growth.</p>
+          </article>
+          <article>
+            <strong>Creator dignity</strong>
+            <p>Creators keep ownership of their work, can export records, and can see how eligible revenue would be calculated before payouts go live.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band split" id="pilot" aria-labelledby="pilot-title">
+        <div class="section-heading">
+          <p class="eyebrow">First proof</p>
+          <h2 id="pilot-title">One excellent short-video pilot, not a giant promise.</h2>
+          <p>
+            The first milestone is a trustworthy 100-user adult pilot with upload, playback, profiles, follows, reporting, a waitlist, a cost ledger, and a shadow creator revenue ledger.
+          </p>
+        </div>
+        <div class="pilot-board" aria-label="Pilot gate checklist">
+          <div class="gate is-ready">
+            <span></span>
+            <strong>Static public site</strong>
+            <small>Can launch free</small>
+          </div>
+          <div class="gate">
+            <span></span>
+            <strong>Clickable prototype</strong>
+            <small>Design before infra</small>
+          </div>
+          <div class="gate">
+            <span></span>
+            <strong>Contributor circle</strong>
+            <small>Five finite roles</small>
+          </div>
+          <div class="gate">
+            <span></span>
+            <strong>100-user alpha</strong>
+            <small>Only after safety gates</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="band influences" id="influences" aria-labelledby="influences-title">
+        <div class="section-heading">
+          <p class="eyebrow">Respect, not endorsement</p>
+          <h2 id="influences-title">We learn from durable public-interest technology.</h2>
+          <p>
+            Signal, GitHub, VideoLAN, and many open-source communities show different parts of the standard: privacy as a rule, collaboration in public, media technology that serves everyone, and maintenance over hype. These are inspirations only; no partnership or endorsement is implied.
+          </p>
+        </div>
+        <div class="influence-grid" aria-label="Inspired by public technology patterns">
+          <article>
+            <span>Signal</span>
+            <p>Privacy defaults, clear boundaries, and refusal to make surveillance the business model.</p>
+          </article>
+          <article>
+            <span>GitHub</span>
+            <p>Public issues, reviewable changes, open contribution records, and collaboration across borders.</p>
+          </article>
+          <article>
+            <span>VideoLAN</span>
+            <p>Open media infrastructure that stays useful, portable, and community-maintained for the long term.</p>
+          </article>
+          <article>
+            <span>Commons Rules</span>
+            <p>A future compatibility mark for projects that follow privacy, openness, safety, portability, and public-benefit standards.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band" id="docs" aria-labelledby="docs-title">
+        <div class="section-heading">
+          <p class="eyebrow">Public repo foundations</p>
+          <h2 id="docs-title">Start with documents people can inspect.</h2>
+        </div>
+        <div class="doc-list">
+          <a href="../docs/MANIFESTO.md">
+            <span>Manifesto</span>
+            <small>Why EverCommons exists</small>
+          </a>
+          <a href="../docs/FOUNDING_CHARTER.md">
+            <span>Founding Charter</span>
+            <small>The mission commitments</small>
+          </a>
+          <a href="../docs/PARTNER_CHARTER.md">
+            <span>Partner Charter</span>
+            <small>What sponsors can and cannot receive</small>
+          </a>
+          <a href="../docs/RFC-0001-MVP.md">
+            <span>RFC-0001</span>
+            <small>MVP scope and exclusions</small>
+          </a>
+          <a href="../docs/BRAND_ARCHITECTURE.md">
+            <span>Brand Architecture</span>
+            <small>VoxonLabs, EverCommons, and foundation timing</small>
+          </a>
+          <a href="../docs/COMMONS_RULES.md">
+            <span>Commons Rules</span>
+            <small>The future compatibility standard</small>
+          </a>
+          <a href="../docs/LAUNCH_CHECKLIST.md">
+            <span>Launch Checklist</span>
+            <small>Cloudflare Pages and public repo setup</small>
+          </a>
+          <a href="../docs/OUTREACH.md">
+            <span>Outreach</span>
+            <small>First messages for creators, contributors, and sponsors</small>
+          </a>
+        </div>
+      </section>
+
+      <section class="band join" id="join" aria-labelledby="join-title">
+        <div class="join-copy">
+          <p class="eyebrow">Founding circle</p>
+          <h2 id="join-title">Help prove the model without asking anyone to abandon what already works.</h2>
+          <p>
+            Creators cross-post. Engineers review concrete tasks. Designers make flows clear. Infrastructure providers offer measured pilot capacity. Nobody receives secret control.
+          </p>
+        </div>
+        <div class="interest-actions" aria-label="Founding interest options">
+          <a href="https://github.com/VoxonLabs/evercommons/issues/new?template=founding-creator.yml">
+            <span>Creator</span>
+            <small>Cross-post original videos and test the creator dashboard.</small>
+          </a>
+          <a href="https://github.com/VoxonLabs/evercommons/issues/new?template=contributor-interest.yml">
+            <span>Contributor</span>
+            <small>Help with engineering, design, docs, privacy, safety, or translation.</small>
+          </a>
+          <a href="https://github.com/VoxonLabs/evercommons/issues/new?template=infrastructure-sponsor.yml">
+            <span>Infrastructure</span>
+            <small>Offer measured pilot capacity without lock-in or data ownership.</small>
+          </a>
+          <a href="https://github.com/VoxonLabs/evercommons/issues/new?template=privacy-security-review.yml">
+            <span>Privacy review</span>
+            <small>Review architecture, data inventory, threat models, and launch boundaries.</small>
+          </a>
+          <p class="form-note">
+            Intake is public by default through GitHub Issues. Do not post private security reports or personal data there.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>EverCommons is a working name pending formal clearance.</span>
+      <a href="../SECURITY.md">Security</a>
+      <a href="../CONTRIBUTING.md">Contribute</a>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

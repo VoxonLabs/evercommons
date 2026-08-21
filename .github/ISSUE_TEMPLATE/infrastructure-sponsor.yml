@@ -1,0 +1,48 @@
+name: Infrastructure sponsor interest
+description: Offer measured pilot capacity under the Partner Charter.
+title: "Infrastructure sponsor: "
+labels: ["founding-interest", "infrastructure"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Infrastructure support must remain measured, replaceable, and non-exclusive.
+
+        Do not post private commercial terms in this public issue.
+  - type: dropdown
+    id: capacity-type
+    attributes:
+      label: Capacity type
+      options:
+        - Object storage
+        - CDN / delivery
+        - Compute
+        - Database
+        - Observability
+        - Security review
+        - Email / communications
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: offer
+    attributes:
+      label: Measured offer
+      description: State the concrete resource, region, term, and limits.
+      placeholder: "Example: 5 TB S3-compatible storage and 10 TB monthly egress for six months."
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements or constraints
+      description: Mention attribution needs, technical constraints, or review requirements.
+  - type: checkboxes
+    id: charter
+    attributes:
+      label: Partner Charter baseline
+      options:
+        - label: This offer does not require user-data ownership, exclusivity, organic reach, or governance control.
+          required: true
+        - label: I have read the Partner Charter.
+          required: true

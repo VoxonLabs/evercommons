@@ -1,0 +1,35 @@
+name: Privacy or security review
+description: Review the public proof, architecture, or launch boundaries.
+title: "Privacy/security review: "
+labels: ["review", "privacy-security"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for public review. Report sensitive vulnerabilities privately according to SECURITY.md.
+  - type: dropdown
+    id: review-type
+    attributes:
+      label: Review type
+      options:
+        - Privacy boundary
+        - Security architecture
+        - Data inventory
+        - Abuse / moderation
+        - Legal / compliance surface
+        - Accessibility
+        - Public wording / claims
+    validations:
+      required: true
+  - type: textarea
+    id: finding
+    attributes:
+      label: Finding or recommendation
+      description: Be specific about the risk and the suggested change.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or reference
+      description: Link to relevant docs, standards, source paths, or examples.

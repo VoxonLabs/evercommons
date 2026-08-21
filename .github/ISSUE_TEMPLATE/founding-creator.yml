@@ -1,0 +1,48 @@
+name: Founding creator interest
+description: Cross-post original work and test creator-facing flows.
+title: "Founding creator: "
+labels: ["founding-interest", "creator"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for considering the EverCommons founding creator circle.
+
+        Do not post private contact details, documents, or unreleased business information in this public issue.
+  - type: input
+    id: public-profile
+    attributes:
+      label: Public creator profile
+      description: Link to a public channel, website, or portfolio.
+      placeholder: "https://..."
+    validations:
+      required: true
+  - type: dropdown
+    id: content-type
+    attributes:
+      label: Primary content type
+      options:
+        - Education
+        - Technology
+        - Culture / arts
+        - Environment / public benefit
+        - Local community
+        - Other original content
+    validations:
+      required: true
+  - type: textarea
+    id: contribution
+    attributes:
+      label: What would you cross-post or test?
+      description: Keep this concrete and scoped to the first pilot.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Pilot boundaries
+      options:
+        - label: I understand EverCommons is pre-alpha and no payout, reach, or access promise exists yet.
+          required: true
+        - label: I can work with original, public-domain, Creative Commons, or otherwise properly licensed content.
+          required: true

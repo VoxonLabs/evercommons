@@ -1,0 +1,46 @@
+name: Contributor interest
+description: Offer finite engineering, design, docs, safety, privacy, or operations help.
+title: "Contributor interest: "
+labels: ["founding-interest", "contributor"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Useful early contributions are small, concrete, and reviewable.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Contribution area
+      options:
+        - Frontend / static site
+        - Product design
+        - Backend architecture
+        - Privacy / security
+        - Trust and safety
+        - Documentation
+        - Accessibility
+        - Translation
+        - Community operations
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed finite task
+      description: Describe one useful thing you can help finish.
+      placeholder: "Example: review the signed-upload threat model and propose quota-abuse tests."
+    validations:
+      required: true
+  - type: input
+    id: relevant-work
+    attributes:
+      label: Relevant public work
+      description: Optional link to GitHub, portfolio, writing, or project history.
+      placeholder: "https://..."
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Contribution boundaries
+      options:
+        - label: I will not add tracking, paid dependencies, or partnership claims without explicit approval.
+          required: true

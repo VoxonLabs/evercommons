@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Read the manifesto
+    url: https://github.com/VoxonLabs/evercommons/blob/main/docs/MANIFESTO.md
+    about: Start here if you want the project context before opening an issue.
+  - name: Review the founding charter
+    url: https://github.com/VoxonLabs/evercommons/blob/main/docs/FOUNDING_CHARTER.md
+    about: Use this to check the non-negotiable commitments.
+  - name: Private security reports
+    url: https://github.com/VoxonLabs/evercommons/blob/main/SECURITY.md
+    about: Do not post private vulnerabilities or sensitive data in public issues.
