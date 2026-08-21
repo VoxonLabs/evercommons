@@ -13,10 +13,11 @@ https://voxonlabs.com
 https://evercommons.voxonlabs.com
 ```
 
-This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** as the first project and movement brand.
+This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** as the first application and movement brand.
 
 ## What is here
 
+- `AGENTS.md` - required operating protocol for future AI coding sessions.
 - `evercommons/` - static EverCommons campaign site; no build step, backend, or paid service required.
 - `index.html` - VoxonLabs parent homepage.
 - `join.html` - public intake page for contributors, creators, organizations, universities and reviewers.
@@ -27,6 +28,10 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 - `docs/PARTNER_CHARTER.md` - rules for sponsors, infrastructure providers, and partners.
 - `docs/RFC-0001-MVP.md` - first product scope and exclusions.
 - `docs/RFC-0002-VOXON-SHIELD.md` - first architecture for the reusable Shield assertion layer.
+- `docs/PHASED_BUILD_PLAN.md` - start/stop roadmap for future work.
+- `docs/ENGINEERING_SECURITY_BASELINE.md` - security, privacy, UX, dependency, and deployment baseline.
+- `docs/REPOSITORY_STRATEGY.md` - repo/server separation rules for Shield, EverCommons, and future apps.
+- `docs/AI_SESSION_HANDOFF.md` - pasteable prompt for continuing in a fresh AI session.
 - `docs/BRAND_ARCHITECTURE.md` - naming, domain, and foundation timing decision.
 - `docs/COMMONS_RULES.md` - future compatibility standard for public-interest projects.
 - `docs/LAUNCH_CHECKLIST.md` - Cloudflare Pages launch steps.
@@ -54,6 +59,20 @@ Then visit:
 
 ```text
 http://127.0.0.1:8080/evercommons/
+```
+
+## Future AI Sessions
+
+Start every AI/coding session with:
+
+```text
+Read AGENTS.md, README.md, docs/PHASED_BUILD_PLAN.md, docs/ENGINEERING_SECURITY_BASELINE.md, docs/REPOSITORY_STRATEGY.md, and the relevant RFC before coding.
+```
+
+For a copy/paste prompt, use:
+
+```text
+docs/AI_SESSION_HANDOFF.md
 ```
 
 ## Cloudflare Pages launch order
