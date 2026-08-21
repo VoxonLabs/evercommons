@@ -92,6 +92,17 @@ After deployment, check:
 - No analytics, pixels, tracking scripts, paid dependencies, or third-party forms are present
 - Public copy says EverCommons is a working name pending formal clearance
 
+## Current Direct-Deploy Note
+
+The current zero-cost deployment can also be run by direct Wrangler uploads instead of Git-connected auto-deploys:
+
+```bash
+npx wrangler pages deploy . --project-name voxonlabs-home --branch main
+npx wrangler pages deploy evercommons --project-name evercommons-social --branch main
+```
+
+If Cloudflare Pages is later connected to GitHub, keep the same output directories and let `main` deploy automatically. Until then, push to GitHub first, then run the direct deployments so production matches the repository.
+
 ## 7. First Public Post
 
 Use restrained wording:
@@ -99,7 +110,7 @@ Use restrained wording:
 ```text
 EverCommons is a pre-alpha public proof for a digital commons that gives back: open source, privacy-preserving, creator-aware, and capacity-gated.
 
-The first product concept is EverCommons Social: an open photo/video network with privacy defaults, explicit-content controls, transparent discovery, and no surveillance business model. The first step is not a giant social network. It is a small public proof, a founding charter, and a GitHub issue-based call for creators, contributors, privacy reviewers, and infrastructure supporters.
+The first product concept is EverCommons Social: an open photo/video network with privacy defaults, explicit-content controls, transparent discovery, and no surveillance business model. The first trust-layer concept is Voxon Shield: a reusable way for applications to receive minimal signed assertions instead of raw identity data. The first step is not a giant social network. It is a small public proof, a founding charter, and a GitHub issue-based call for creators, contributors, privacy reviewers, and infrastructure supporters.
 
 Built by VoxonLabs. Working name pending formal clearance.
 ```

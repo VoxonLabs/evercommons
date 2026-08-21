@@ -13,14 +13,16 @@ voxonlabs.com/evercommons
 Use the public naming stack:
 
 ```text
-EverCommons
-by VoxonLabs
+VoxonLabs
+  Voxon Shield (working name for the reusable trust layer)
+  EverCommons (application #1)
 ```
 
 ## Roles
 
 - **VoxonLabs** is the parent lab, studio, or incubator identity.
-- **EverCommons** is the public project and movement.
+- **Voxon Shield** is the working name for the reusable trust, identity, authentication, and safety layer.
+- **EverCommons** is the first public application and movement built under VoxonLabs.
 - **EverCommons Social** is the first product name until a separate consumer brand is justified.
 - **EverCommons Foundation** is a future stewarding structure, not a current public claim.
 
@@ -28,7 +30,7 @@ by VoxonLabs
 
 "The Open Source Foundation" is too generic for this project and creates avoidable confusion with existing open-source institutions and naming patterns. It also undersells the actual mission, which is broader than open-source code: privacy, creator economics, capacity-gated growth, transparent money, and public benefit.
 
-EverCommons is more specific. It names the commons model and leaves room for social, identity, cloud, messaging, or other public-interest services later.
+EverCommons is more specific for the first application. VoxonLabs leaves room for Shield, social, identity, cloud, messaging, or other public-interest services later.
 
 ## Domain Guidance
 
@@ -36,7 +38,9 @@ For now, do not buy another domain. The zero-cost rule wins.
 
 Recommended paths:
 
+- `voxonlabs.com` for the parent homepage.
 - `voxonlabs.com/evercommons` for the public campaign page.
+- `docs/RFC-0002-VOXON-SHIELD.md` for the Shield architecture while the project remains zero-cost and pre-code.
 - `github.com/<org>/evercommons` for the public repository.
 - `github.com/VoxonLabs/evercommons` as the assumed repository URL in the current static site.
 - `hello@voxonlabs.com` only after mail is configured.

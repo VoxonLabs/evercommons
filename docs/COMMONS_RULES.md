@@ -26,12 +26,14 @@ Until legal review and governance exist, this is a project standard, not a regis
 8. Transparent economics: creator, contributor, infrastructure, reserve, safety, and public-benefit allocations use published formulas when money exists.
 9. Replaceable providers: no vendor receives user-data ownership, algorithmic control, or permanent revenue rights.
 10. Public-benefit link: every product should support healthier digital society, sustainability, or another concrete public-interest purpose.
+11. Minimal trust assertions: applications request derived facts, not raw identity documents, dates of birth, addresses, or provider packets.
+12. Scoped enforcement: access limits, suspensions, and abuse decisions are app-scoped where possible, reasoned, time-bounded, reviewable, and never reduced to a shared global social-credit score.
 
 ## First Product Under the Rules
 
 EverCommons Social is the first product concept: an open-source photo/video social network for real people, creators, communities, and public-interest projects.
 
-It should begin with adult closed testing, strong reporting and moderation tools, explicit-content controls, a following feed, transparent discovery, creator dashboards, and no public upload scale until capacity gates pass.
+It should begin with adult closed testing, strong reporting and moderation tools, explicit-content controls, a following feed, transparent discovery, creator dashboards, and no public upload scale until capacity gates pass. Where identity or age assurance is needed, EverCommons should rely on the Voxon Shield model: short-lived assertions instead of raw identity data.
 
 ## Inspiration Boundary
 

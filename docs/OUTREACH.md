@@ -18,7 +18,7 @@ https://github.com/VoxonLabs/evercommons/issues/new?template=founding-creator.ym
 
 EverCommons is starting with the operating rules before the platform: privacy for everyone, open core, transparent money, no provider lock-in, and capacity-gated growth.
 
-Useful early help is finite: review the static site, improve accessibility, prototype one flow, write a threat-model checklist, or turn the MVP RFC into concrete issues.
+Useful early help is finite: review the static site, improve accessibility, prototype one flow, write a threat-model checklist, review the Shield assertion architecture, or turn the MVP RFC into concrete issues.
 
 Contributor issue:
 
@@ -28,7 +28,7 @@ https://github.com/VoxonLabs/evercommons/issues/new?template=contributor-interes
 
 ## Privacy and Security Reviewers
 
-The project is intentionally pre-alpha. This is the right time to review claims, data boundaries, launch risks, and the future upload/moderation surface before public accounts exist.
+The project is intentionally pre-alpha. This is the right time to review claims, data boundaries, launch risks, the Shield minimal-assertion model, and the future upload/moderation surface before public accounts exist.
 
 Public review issue:
 
@@ -62,7 +62,7 @@ https://github.com/VoxonLabs/evercommons/issues/new?template=infrastructure-spon
 
 ## Universities, Professors and Public-Interest Labs
 
-EverCommons needs research-minded contributors before it needs scale. Useful university support includes safety review, moderation process design, privacy threat modelling, sustainability measurement, creator-economics review, accessibility testing and student projects.
+EverCommons needs research-minded contributors before it needs scale. Useful university support includes privacy-preserving identity review, pairwise pseudonymity research, safety review, moderation process design, privacy threat modelling, sustainability measurement, creator-economics review, accessibility testing and student projects.
 
 Start with a public issue unless the topic is sensitive:
 

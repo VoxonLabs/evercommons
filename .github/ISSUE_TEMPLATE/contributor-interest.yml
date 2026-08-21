@@ -13,6 +13,8 @@ body:
       label: Contribution area
       options:
         - Frontend / static site
+        - Voxon Shield protocol / API
+        - Passkey / authentication prototype
         - Product design
         - Backend architecture
         - Privacy / security

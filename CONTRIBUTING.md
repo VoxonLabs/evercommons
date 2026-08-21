@@ -5,6 +5,7 @@ EverCommons is pre-alpha. The useful contribution style right now is small, fini
 ## Good First Contributions
 
 - Review the founding charter for unclear commitments.
+- Review `docs/RFC-0002-VOXON-SHIELD.md` for identity, authentication, pseudonymity, and safety risks.
 - Improve the static site for accessibility, responsive layout, or copy clarity.
 - Draft issue templates for creator interviews, infrastructure requests, and privacy review.
 - Create a threat-model checklist for signed uploads and quota abuse.

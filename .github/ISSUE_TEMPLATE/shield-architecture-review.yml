@@ -1,0 +1,38 @@
+name: Voxon Shield architecture review
+description: Review the proposed Shield trust, identity, authentication, and safety layer.
+title: "Shield review: "
+labels: ["review", "voxon-shield", "privacy-security"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for public review of RFC-0002. Do not post private vulnerabilities, personal data, exploit details, or real identity documents.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Review area
+      options:
+        - Minimal assertions
+        - Pairwise pseudonymous identifiers
+        - Verification vs authentication
+        - Passkeys / WebAuthn
+        - Credential formats
+        - Provider boundary
+        - Uniqueness / one-human problem
+        - Anti-spam without surveillance
+        - Revocation / appeals
+        - Public wording / claims
+    validations:
+      required: true
+  - type: textarea
+    id: concern
+    attributes:
+      label: Concern or recommendation
+      description: Describe the specific risk, ambiguity, or improvement.
+    validations:
+      required: true
+  - type: textarea
+    id: suggested-change
+    attributes:
+      label: Suggested change
+      description: Link to relevant standards, papers, examples, or source paths where helpful.

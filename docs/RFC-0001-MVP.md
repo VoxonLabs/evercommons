@@ -8,7 +8,7 @@ Build one excellent open-source photo/video social pilot before expanding into m
 
 EverCommons Social is the first product concept: profiles, posts, short video, creator pages, following feeds, transparent discovery, and safety controls. It should solve the familiar photo/video social use case without copying a surveillance business model.
 
-The MVP should prove a narrow claim: a useful social product can combine mainstream-quality experience, privacy-preserving monetization, open governance, creator economics, contributor recognition, capacity-gated growth, and replaceable infrastructure.
+The MVP should prove a narrow claim: a useful social product can combine mainstream-quality experience, privacy-preserving monetization, open governance, creator economics, contributor recognition, capacity-gated growth, replaceable infrastructure, and a reusable trust layer that does not expose raw identity data to the application.
 
 ## Initial Audience
 
@@ -21,6 +21,7 @@ The MVP should prove a narrow claim: a useful social product can combine mainstr
 ## MVP Capabilities
 
 - Accounts: email or passkey, profile, recovery, export, and deletion.
+- Shield assertions: verified adult human status should be consumed as a minimal signed assertion, not as raw identity-provider data.
 - Video: vertical upload, processing, adaptive playback, captions, thumbnails, and rights metadata.
 - Social graph: follow, unfollow, profile, likes, comments, blocks, and mutes.
 - Feeds: following, chronological, and one transparent discovery feed.
@@ -36,6 +37,7 @@ The MVP should prove a narrow claim: a useful social product can combine mainstr
 - No private messaging.
 - No commercial music catalog.
 - No minors in the first public pilot.
+- No raw passport, document image, selfie, date of birth, or address storage in the EverCommons application.
 - No cryptocurrency or token.
 - No global federation write path.
 - No attempt to train a frontier foundation model.

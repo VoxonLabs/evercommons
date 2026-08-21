@@ -23,6 +23,7 @@
       </a>
       <nav aria-label="Primary">
         <a href="#principles">Principles</a>
+        <a href="#shield">Shield</a>
         <a href="#projects">Projects</a>
         <a href="#ecosystem">Ecosystem</a>
         <a href="./join.html">Join</a>
@@ -37,10 +38,11 @@
           <p class="eyebrow">VoxonLabs</p>
           <h1 id="hero-title">Better defaults for digital society.</h1>
           <p class="lede">
-            We build public-interest alternatives where the current internet asks people to trade privacy, safety, dignity, or sustainability for basic connection.
+            We build public-interest alternatives where the current internet asks people to trade privacy, safety, dignity, or sustainability for basic connection. EverCommons is application #1; Voxon Shield is the reusable trust layer underneath it.
           </p>
           <div class="hero-actions">
-            <a class="button primary" href="./evercommons/">Open EverCommons</a>
+            <a class="button primary" href="./docs/RFC-0002-VOXON-SHIELD.md">Read Shield RFC</a>
+            <a class="button secondary" href="./evercommons/">Open EverCommons</a>
             <a class="button secondary" href="./join.html">Join the work</a>
             <a class="button secondary" href="./support.html">Support the mission</a>
           </div>
@@ -59,7 +61,7 @@
             </div>
             <div>
               <dt>Core</dt>
-              <dd>Open source</dd>
+              <dd>Shield</dd>
             </div>
             <div>
               <dt>Growth</dt>
@@ -93,12 +95,40 @@
         </div>
       </section>
 
+      <section class="band product" id="shield" aria-labelledby="shield-title">
+        <div class="section-heading">
+          <p class="eyebrow">Foundation layer</p>
+          <h2 id="shield-title">Voxon Shield answers trust questions without revealing identities.</h2>
+          <p>
+            Shield is the proposed reusable API, SDK, policy engine, and safety layer for VoxonLabs applications. An app should ask whether a user is a verified adult human and receive a short-lived signed assertion. It should not receive a passport, name, date of birth, address, selfie, or provider data.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="./docs/RFC-0002-VOXON-SHIELD.md">Open architecture RFC</a>
+            <a class="button secondary" href="https://github.com/VoxonLabs/evercommons/issues/new?template=shield-architecture-review.yml">Review Shield</a>
+          </div>
+        </div>
+        <div class="standard-grid" aria-label="Voxon Shield commitments">
+          <article>
+            <strong>Assertions, not identity records</strong>
+            <p>Applications receive derived facts such as verified human, age over 18, and eligible. Raw identity packages stay outside the application boundary.</p>
+          </article>
+          <article>
+            <strong>Pairwise pseudonyms</strong>
+            <p>EverCommons, a forum, and a future dating app should each receive different internal subjects for the same person.</p>
+          </article>
+          <article>
+            <strong>Modular safety</strong>
+            <p>Verification, passkey authentication, uniqueness, anti-spam, messaging controls, and explicit-content policy stay separate and reviewable.</p>
+          </article>
+        </div>
+      </section>
+
       <section class="band product" id="projects" aria-labelledby="projects-title">
         <div class="section-heading">
-          <p class="eyebrow">First project</p>
-          <h2 id="projects-title">EverCommons starts with the social problem.</h2>
+          <p class="eyebrow">First application</p>
+          <h2 id="projects-title">EverCommons is the first proof on top of Shield.</h2>
           <p>
-            EverCommons Social is the first product concept: an open-source photo/video network for real people, creators, communities, and public-interest projects. It starts small, publishes its rules, and grows only when capacity, moderation, privacy, and economics are ready.
+            EverCommons Social is the first application concept: an open-source photo/video network for real people, creators, communities, and public-interest projects. It starts small, publishes its rules, asks Shield for only minimal trust assertions, and grows only when capacity, moderation, privacy, and economics are ready.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="./evercommons/">Visit EverCommons</a>
@@ -112,7 +142,7 @@
           <p class="eyebrow">Future platform</p>
           <h2 id="future-title">A family of tools for a safer digital future.</h2>
           <p>
-            VoxonLabs will only add products when the rules, safety model, and operating capacity are ready. The future direction includes open social media, verified civic/news flows, safer community campaigns, creator tools, child-aware controls, and transparent sustainability projects.
+            VoxonLabs will only add products when the rules, safety model, and operating capacity are ready. The future direction includes open social media, verified civic/news flows, safer community campaigns, creator tools, child-aware controls, transparent sustainability projects, and Shield-backed trust assertions where identity risk exists.
           </p>
         </div>
         <div class="standard-grid" aria-label="Future platform directions">
@@ -154,7 +184,7 @@
           </article>
           <article>
             <span>Commons Rules</span>
-            <p>Turn values into a repeatable standard before building more products.</p>
+            <p>Turn values into a repeatable standard before building more products, with Shield as the technical enforcement layer where trust, age, and abuse controls matter.</p>
           </article>
         </div>
       </section>
@@ -164,6 +194,7 @@
       <span>VoxonLabs incubates public-benefit projects. EverCommons is the first proof.</span>
       <a href="./join.html">Join</a>
       <a href="./support.html">Support</a>
+      <a href="./docs/RFC-0002-VOXON-SHIELD.md">Shield</a>
       <a href="./docs/BRAND_ARCHITECTURE.md">Brand</a>
       <a href="./SECURITY.md">Security</a>
     </footer>

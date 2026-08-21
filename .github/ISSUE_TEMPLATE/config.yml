@@ -6,6 +6,9 @@ contact_links:
   - name: Review the founding charter
     url: https://github.com/VoxonLabs/evercommons/blob/main/docs/FOUNDING_CHARTER.md
     about: Use this to check the non-negotiable commitments.
+  - name: Review Voxon Shield
+    url: https://github.com/VoxonLabs/evercommons/blob/main/docs/RFC-0002-VOXON-SHIELD.md
+    about: Start here for the reusable trust, identity, authentication, and safety layer.
   - name: Private security reports
     url: https://github.com/VoxonLabs/evercommons/blob/main/SECURITY.md
     about: Do not post private vulnerabilities or sensitive data in public issues.

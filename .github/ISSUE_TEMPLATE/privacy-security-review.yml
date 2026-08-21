@@ -13,6 +13,10 @@ body:
       label: Review type
       options:
         - Privacy boundary
+        - Voxon Shield minimal assertions
+        - Pairwise pseudonymity
+        - Passkey / WebAuthn design
+        - Credential provider boundary
         - Security architecture
         - Data inventory
         - Abuse / moderation

@@ -1,6 +1,8 @@
 # VoxonLabs / EverCommons
 
-Zero-cost starter workspace for **EverCommons**, a public-benefit digital commons project incubated by **VoxonLabs**.
+Zero-cost starter workspace for **VoxonLabs** public-interest systems.
+
+**EverCommons** is application #1. **Voxon Shield** is the proposed reusable trust, identity, authentication, and safety layer underneath EverCommons and future VoxonLabs applications.
 
 ## Recommended public path
 
@@ -15,7 +17,7 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 
 ## What is here
 
-- `evercommons/` - static campaign site; no build step, backend, or paid service required.
+- `evercommons/` - static EverCommons campaign site; no build step, backend, or paid service required.
 - `index.html` - VoxonLabs parent homepage.
 - `join.html` - public intake page for contributors, creators, organizations, universities and reviewers.
 - `support.html` - support and future donation-readiness page.
@@ -24,6 +26,7 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 - `docs/FOUNDING_CHARTER.md` - initial mission and governance commitments.
 - `docs/PARTNER_CHARTER.md` - rules for sponsors, infrastructure providers, and partners.
 - `docs/RFC-0001-MVP.md` - first product scope and exclusions.
+- `docs/RFC-0002-VOXON-SHIELD.md` - first architecture for the reusable Shield assertion layer.
 - `docs/BRAND_ARCHITECTURE.md` - naming, domain, and foundation timing decision.
 - `docs/COMMONS_RULES.md` - future compatibility standard for public-interest projects.
 - `docs/LAUNCH_CHECKLIST.md` - Cloudflare Pages launch steps.
@@ -85,4 +88,4 @@ If the repository is published under another owner or name, update the links in 
 
 ## Current status
 
-Pre-alpha public proof. No user accounts, no public uploads, no ads, no payouts, and no foundation entity yet.
+Pre-alpha public proof. No user accounts, no public uploads, no ads, no payouts, no identity provider, and no foundation entity yet.

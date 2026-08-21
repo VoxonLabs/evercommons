@@ -1,6 +1,6 @@
 # Security Policy
 
-EverCommons is pre-alpha and does not yet operate public user accounts, uploads, ads, payouts, or production infrastructure.
+VoxonLabs and EverCommons are pre-alpha and do not yet operate public user accounts, uploads, ads, payouts, identity proofing, or production application infrastructure.
 
 ## Current Scope
 
@@ -8,11 +8,12 @@ In scope:
 
 - Static site files in `evercommons/`.
 - Public documentation and repository configuration.
+- Voxon Shield architecture drafts in `docs/`.
 - Any future prototype code once added to this repository.
 
 Out of scope:
 
-- The `voxonlabs.com` domain until this repository is actually deployed there.
+- Third-party DNS, registrar, email-routing, and Pages platform issues outside this repository.
 - Third-party services not configured in this repository.
 - The founding blueprint PDF as an archival planning document.
 
