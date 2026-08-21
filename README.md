@@ -28,6 +28,7 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 - `docs/PARTNER_CHARTER.md` - rules for sponsors, infrastructure providers, and partners.
 - `docs/RFC-0001-MVP.md` - first product scope and exclusions.
 - `docs/RFC-0002-VOXON-SHIELD.md` - first architecture for the reusable Shield assertion layer.
+- `docs/RFC-0003-MEDIA-CDN-SECURITY.md` - media upload, processing, storage, CDN, moderation, and cost-abuse architecture.
 - `docs/PHASED_BUILD_PLAN.md` - start/stop roadmap for future work.
 - `docs/ENGINEERING_SECURITY_BASELINE.md` - security, privacy, UX, dependency, and deployment baseline.
 - `docs/REPOSITORY_STRATEGY.md` - repo/server separation rules for Shield, EverCommons, and future apps.

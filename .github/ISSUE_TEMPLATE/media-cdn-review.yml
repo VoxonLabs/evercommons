@@ -1,0 +1,40 @@
+name: Media and CDN security review
+description: Review upload, processing, storage, CDN, moderation, deletion, and cost-abuse controls.
+title: "Media/CDN review: "
+labels: ["review", "media-security", "privacy-security"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for public review of RFC-0003. Do not post illegal content, private media, real abuse evidence, exploit payloads, or sensitive vulnerabilities.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Review area
+      options:
+        - Upload validation
+        - Private intake / quarantine
+        - Image processing
+        - Video processing
+        - CDN delivery
+        - Signed URLs / access control
+        - Metadata stripping
+        - Moderation workflow
+        - Deletion / CDN purge
+        - Cost abuse
+        - Provider lock-in
+        - Public wording / claims
+    validations:
+      required: true
+  - type: textarea
+    id: concern
+    attributes:
+      label: Concern or recommendation
+      description: Describe the specific risk, ambiguity, or improvement.
+    validations:
+      required: true
+  - type: textarea
+    id: suggested-change
+    attributes:
+      label: Suggested change
+      description: Link to relevant standards, provider docs, examples, or source paths where helpful.

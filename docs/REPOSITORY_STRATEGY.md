@@ -16,6 +16,7 @@ VoxonLabs/voxon-shield         Shield API, policy engine, core service
 VoxonLabs/shield-js            JavaScript/TypeScript SDK, if needed
 VoxonLabs/evercommons          EverCommons product app
 VoxonLabs/evercommons-api      optional backend if separated from app repo
+VoxonLabs/evercommons-media    optional media pipeline if separated from app repo
 VoxonLabs/evercommons-infra    optional infrastructure-as-code
 VoxonLabs/<future-app>         each future app gets its own repo
 ```
@@ -30,6 +31,7 @@ Create a separate repo when a component has any of these:
 - Its own secrets.
 - Its own database.
 - Its own public API.
+- Its own media pipeline, CDN, bucket, queue, or processing workers.
 - Its own SDK/package release.
 - Its own security review surface.
 - Its own issue roadmap.

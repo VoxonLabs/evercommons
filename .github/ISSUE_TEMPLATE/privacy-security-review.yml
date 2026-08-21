@@ -17,6 +17,7 @@ body:
         - Pairwise pseudonymity
         - Passkey / WebAuthn design
         - Credential provider boundary
+        - Media upload / CDN boundary
         - Security architecture
         - Data inventory
         - Abuse / moderation

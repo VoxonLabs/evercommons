@@ -12,6 +12,8 @@ Use these as the default references and re-check them when starting security-sen
 - NIST Secure Software Development Framework, SP 800-218: https://csrc.nist.gov/pubs/sp/800/218/final
 - OWASP Application Security Verification Standard 5.0: https://owasp.org/www-project-application-security-verification-standard/
 - OWASP Top 10 2025: https://owasp.org/Top10/
+- OWASP File Upload Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html
+- OWASP Content Security Policy Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
 - W3C WCAG 2.2: https://www.w3.org/TR/WCAG22/
 - NIST Digital Identity Guidelines, SP 800-63-4: https://pages.nist.gov/800-63-4/
 - W3C WebAuthn Level 3: https://www.w3.org/TR/webauthn-3/
@@ -45,6 +47,7 @@ Treat these as highly sensitive:
 - Minors' data.
 - Moderation reports and appeal evidence.
 - Session tokens, secrets, API keys, build tokens, provider webhooks.
+- Raw user uploads, processed private media, EXIF/GPS metadata, thumbnails for private media, and moderation evidence.
 
 Application databases should not store raw identity documents or provider packets.
 
@@ -155,6 +158,30 @@ For applications/APIs:
 - Return safe errors that do not leak internals.
 - Add tests for authorization failures, invalid input, replay, expiry, and abuse limits.
 
+## Media and CDN Baseline
+
+User media is untrusted input.
+
+Before public uploads:
+
+- Read `docs/RFC-0003-MEDIA-CDN-SECURITY.md`.
+- Keep raw uploads private.
+- Store raw uploads outside public web/CDN paths.
+- Generate object IDs server-side.
+- Do not trust user filenames, extensions, MIME types, dimensions, duration, or metadata.
+- Allow only required media types.
+- Set upload size, decoded size, duration, and resolution limits.
+- Strip EXIF/GPS/device metadata.
+- Re-encode images and transcode videos before public delivery.
+- Serve only processed derivatives publicly.
+- Use a separate media domain from the application.
+- Use signed URLs or authorization workers for restricted media.
+- Make CDN purge/deletion testable.
+- Add upload quotas, processing quotas, bandwidth caps, and kill switches.
+- Keep moderation evidence private.
+
+Do not enable public uploads until upload, processing, delivery, deletion, takedown, moderation, and cost-abuse controls have been tested.
+
 ## Dependency and Supply Chain Rule
 
 Before adding dependencies:
@@ -220,4 +247,4 @@ Before production deployment:
 - Public links work.
 - Security headers are present where applicable.
 
-Do not deploy public-account, upload, payment, identity, ad, DM, or minors functionality without a written threat model and explicit approval.
+Do not deploy public-account, media upload/CDN, payment, identity, ad, DM, or minors functionality without a written threat model and explicit approval.

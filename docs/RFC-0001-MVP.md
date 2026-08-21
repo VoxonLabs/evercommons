@@ -47,6 +47,7 @@ The MVP should prove a narrow claim: a useful social product can combine mainstr
 The project should not accept public uploads at uncontrolled scale until these are ready:
 
 - Stable upload, transcode, playback, and backup restore.
+- Media/CDN threat model, private raw uploads, processed derivatives, deletion/purge test, upload quotas, and cost-abuse controls.
 - Report handling, appeals, moderation coverage, and incident playbook.
 - Data inventory, retention controls, export, deletion, and privacy review.
 - Realistic cost-per-watch-minute and cost-per-upload measurements.

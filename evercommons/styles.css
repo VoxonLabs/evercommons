@@ -582,6 +582,12 @@ footer a {
     font-size: clamp(3.7rem, 20vw, 6.4rem);
   }
 
+  body:not(.voxon-home) h1 {
+    max-width: 100%;
+    font-size: 3rem;
+    line-height: 0.98;
+  }
+
   .button {
     width: 100%;
   }

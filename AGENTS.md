@@ -35,7 +35,7 @@ Do not jump directly into coding if the phase, repo boundary, or safety risk is 
 
 Research before acting when the task involves:
 
-- Security, identity, authentication, cryptography, safety, privacy, law, payments, children, moderation, deployment, DNS, email, external APIs, current standards, or paid vendors.
+- Security, identity, authentication, cryptography, media upload, CDN/storage, safety, privacy, law, payments, children, moderation, deployment, DNS, email, external APIs, current standards, or paid vendors.
 - Product choices that could cost money, lock the project into a provider, or expose users to risk.
 - A claim that depends on current information.
 
@@ -55,6 +55,7 @@ Ask before:
 - Creating accounts, changing DNS, changing email routing, or rotating secrets.
 - Collecting personal data.
 - Building identity proofing, payments, public uploads, ads, private messaging, or minors support.
+- Enabling media upload, CDN delivery, storage buckets, or third-party media processing.
 - Making a public partnership, endorsement, foundation, or certification claim.
 
 ## Security-First Rules
@@ -70,6 +71,7 @@ Every product decision must pass these gates:
 - User input is validated at trusted service boundaries.
 - Use maintained frameworks and libraries instead of custom security primitives.
 - Publish threat models before public accounts, uploads, payments, ads, DMs, or identity proofing.
+- Never serve raw user uploads as public CDN assets.
 - Use reasoned, scoped, appealable safety decisions. No global social-credit score.
 
 If a requested change weakens these rules, warn clearly and propose a safer path.
@@ -126,7 +128,7 @@ Stop and ask before continuing if:
 - The task requires paid infrastructure and no free path is safe.
 - A secret, token, private identity document, or private vulnerability appears in public context.
 - The requested build would collect identity, child, payment, health, location, biometric, or intimate data without a threat model and legal/privacy review.
-- The next step is a production launch with public accounts, uploads, DMs, identity verification, ads, payouts, or minors.
+- The next step is a production launch with public accounts, uploads, media CDN delivery, DMs, identity verification, ads, payouts, or minors.
 - The model cannot understand the security impact of the change.
 
 For weak or uncertain models: do not implement security-sensitive code. Draft a plan, identify risks, and ask for a stronger review.

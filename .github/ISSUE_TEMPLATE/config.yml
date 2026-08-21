@@ -9,6 +9,9 @@ contact_links:
   - name: Review Voxon Shield
     url: https://github.com/VoxonLabs/evercommons/blob/main/docs/RFC-0002-VOXON-SHIELD.md
     about: Start here for the reusable trust, identity, authentication, and safety layer.
+  - name: Review media and CDN security
+    url: https://github.com/VoxonLabs/evercommons/blob/main/docs/RFC-0003-MEDIA-CDN-SECURITY.md
+    about: Start here for upload, processing, storage, CDN, moderation, deletion, and cost-abuse controls.
   - name: Private security reports
     url: https://github.com/VoxonLabs/evercommons/blob/main/SECURITY.md
     about: Do not post private vulnerabilities or sensitive data in public issues.

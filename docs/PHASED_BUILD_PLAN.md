@@ -10,14 +10,14 @@ Current recommended phase: **Phase 1 - Shield protocol design and local proof**.
 
 Phase 0 is sufficiently complete for the public proof: domain, static site, GitHub repo, Cloudflare Pages deployment, core docs, security policy, and the Voxon Shield architecture RFC exist.
 
-Do not start a real EverCommons backend before the Shield trust boundary is specified and locally demonstrated.
+Do not start a real EverCommons backend or media upload path before the Shield trust boundary and media/CDN boundary are specified and locally demonstrated.
 
 ## Phase Rules
 
 - Each phase has a start condition, work scope, stop gate, and evidence.
 - Do not skip gates because the idea feels exciting.
 - If a gate cannot be met with zero-cost tools, pause and document the blocker.
-- If a phase introduces personal data, public accounts, uploads, payments, ads, minors, identity proofing, or private messaging, require threat modeling first.
+- If a phase introduces personal data, public accounts, media uploads, CDN delivery, payments, ads, minors, identity proofing, or private messaging, require threat modeling first.
 - Every phase ends with a handoff note: what changed, what was verified, what risks remain, and what the next model should do.
 
 ## Phase 0: Public Proof and Governance Baseline
@@ -119,14 +119,37 @@ Stop gate:
 - Privacy and safety copy is clear.
 - Users cannot upload real content or create production accounts.
 
-## Phase 4: EverCommons Technical Architecture
+## Phase 4: Media and CDN Security Architecture
 
-Status: blocked until Phase 1 and Phase 3 gates pass.
+Status: blocked until Phase 1 is demonstrated.
+
+Work scope:
+
+- Read and update `docs/RFC-0003-MEDIA-CDN-SECURITY.md`.
+- Draft media data inventory.
+- Draft upload, processing, CDN, deletion, moderation, and cost-abuse threat model.
+- Define storage zones: intake, processing, public derivatives, restricted derivatives, moderation evidence, and backup.
+- Evaluate Cloudflare R2, Images, and Stream against zero-cost/low-cost, security, export, deletion, and lock-in constraints.
+- Build only local stubs. No public uploads.
+
+Stop gate:
+
+- Threat model exists.
+- Raw uploads are designed as private/quarantined.
+- Public media is designed as processed derivatives only.
+- CDN purge/deletion path is defined.
+- Upload quotas, cost caps, and kill switch are defined.
+- Moderation/report/appeal state machine exists.
+- No public upload path exists.
+
+## Phase 5: EverCommons Technical Architecture
+
+Status: blocked until Phase 1, Phase 3, and Phase 4 gates pass.
 
 Work scope:
 
 - Decide repo split for EverCommons product code.
-- Draft upload, media processing, storage, moderation, reporting, export, deletion, and cost architecture.
+- Draft app backend, feed, upload integration, media processing, storage, moderation, reporting, export, deletion, and cost architecture.
 - Compare zero-cost and low-cost infrastructure options before choosing.
 - Create threat models for upload abuse, moderation abuse, account abuse, and cost abuse.
 
@@ -137,7 +160,7 @@ Stop gate:
 - No irreversible vendor lock-in.
 - No public launch date promised.
 
-## Phase 5: Closed Adult Pilot
+## Phase 6: Closed Adult Pilot
 
 Status: not ready.
 
@@ -149,6 +172,7 @@ Start condition:
 - Data export/deletion path exists.
 - Upload cost and abuse controls tested.
 - Shield minimal assertion path is ready or the pilot avoids identity claims entirely.
+- Media/CDN stop gate has passed if uploads are included.
 
 Work scope:
 
@@ -163,10 +187,11 @@ Stop gate:
 - Backup/restore tested.
 - Abuse controls tested.
 - Account deletion/export tested.
+- Media deletion/CDN purge tested if uploads are included.
 - Incident process tested.
 - No minors, payouts, ads, DMs, or public scale.
 
-## Phase 6: Separate Product Repositories
+## Phase 7: Separate Product Repositories
 
 Status: future.
 
@@ -185,7 +210,7 @@ Stop gate:
 - Repos have clear ownership, README, security policy, local setup, CI, and deployment docs.
 - No production database is shared across unrelated apps.
 
-## Phase 7: Future Applications
+## Phase 8: Future Applications
 
 Status: ideas only.
 
