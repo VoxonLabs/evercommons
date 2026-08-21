@@ -6,6 +6,7 @@ EverCommons is pre-alpha. The useful contribution style right now is small, fini
 
 - Review the founding charter for unclear commitments.
 - Review `docs/RFC-0002-VOXON-SHIELD.md` and the local proof in `shield/` for identity, authentication, pseudonymity, and safety risks.
+- Review `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md` for backend, feed, media integration, cost, and lock-in risks.
 - Run `cd shield && npm test` after assertion-schema changes.
 - Improve the static site for accessibility, responsive layout, or copy clarity.
 - Draft issue templates for creator interviews, infrastructure requests, and privacy review.

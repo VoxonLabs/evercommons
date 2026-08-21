@@ -6,9 +6,9 @@ This file tells future AI sessions where to start, where to stop, and what evide
 
 ## Current Phase
 
-Current recommended phase: **Phase 5 - EverCommons technical architecture**, still no public uploads or production backend.
+Current recommended phase: **Phase 6 remains blocked.** Architecture draft is RFC-0004. Next product work is public review, not a backend.
 
-Phase 4 local media stub exists at `evercommons/media/`. Kill switch stays on. R2/Images/Stream are not approved. Recovery after device loss is not implemented.
+Phase 5 draft exists at `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md`. Public review: https://github.com/VoxonLabs/evercommons/issues/1. No D1, R2, Stream, public accounts, or uploads are enabled. Recovery after device loss is not implemented.
 
 ## Phase Rules
 
@@ -181,7 +181,7 @@ Stop gate:
 
 ## Phase 5: EverCommons Technical Architecture
 
-Status: unblocked for an architecture draft. No production backend, accounts, or uploads.
+Status: architecture draft complete. No production backend, accounts, or uploads.
 
 Work scope:
 
@@ -196,6 +196,12 @@ Stop gate:
 - Security baseline maps to planned controls.
 - No irreversible vendor lock-in.
 - No public launch date promised.
+
+Evidence:
+
+- `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md`
+- `.github/ISSUE_TEMPLATE/evercommons-architecture-review.yml`
+- Public review: https://github.com/VoxonLabs/evercommons/issues/1
 
 ## Phase 6: Closed Adult Pilot
 

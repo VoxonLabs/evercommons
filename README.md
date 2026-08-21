@@ -32,6 +32,7 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 - `docs/RFC-0002-VOXON-SHIELD.md` - first architecture for the reusable Shield assertion layer.
 - `shield/` - local mock-only Shield issuer, verifier, assertion schema, and tests. Not a production identity system.
 - `docs/RFC-0003-MEDIA-CDN-SECURITY.md` - media upload, processing, storage, CDN, moderation, and cost-abuse architecture.
+- `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md` - EverCommons technical architecture draft. No launch date.
 - `docs/PHASED_BUILD_PLAN.md` - start/stop roadmap for future work.
 - `docs/ENGINEERING_SECURITY_BASELINE.md` - security, privacy, UX, dependency, and deployment baseline.
 - `docs/REPOSITORY_STRATEGY.md` - repo/server separation rules for Shield, EverCommons, and future apps.
@@ -129,4 +130,4 @@ If the repository is published under another owner or name, update the links in 
 
 ## Current status
 
-Pre-alpha public proof. No user accounts, no public uploads, no ads, no payouts, no identity provider, and no foundation entity yet. A local mock Shield issuer/verifier and a localhost passkey prototype exist in `shield/`. A clickable EverCommons UX shell exists at `evercommons/prototype/`. A local media stub exists at `evercommons/media/` with the upload kill switch on. Recovery after device loss is not implemented.
+Pre-alpha public proof. No user accounts, no public uploads, no ads, no payouts, no identity provider, and no foundation entity yet. A local mock Shield issuer/verifier and a localhost passkey prototype exist in `shield/`. A clickable EverCommons UX shell exists at `evercommons/prototype/`. A local media stub exists at `evercommons/media/` with the upload kill switch on. Technical architecture is drafted in `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md`. Public architecture review: https://github.com/VoxonLabs/evercommons/issues/1. Recovery after device loss is not implemented. No public launch date.
