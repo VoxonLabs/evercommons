@@ -20,6 +20,7 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 - `AGENTS.md` - required operating protocol for future AI coding sessions.
 - `evercommons/` - static EverCommons campaign site; no build step, backend, or paid service required.
 - `evercommons/prototype/` - clickable Social UX shell. No real accounts or uploads.
+- `evercommons/media/` - local media pipeline stub. Kill switch on. No public storage.
 - `index.html` - VoxonLabs parent homepage.
 - `join.html` - public intake page for contributors, creators, organizations, universities and reviewers.
 - `support.html` - support and future donation-readiness page.
@@ -128,4 +129,4 @@ If the repository is published under another owner or name, update the links in 
 
 ## Current status
 
-Pre-alpha public proof. No user accounts, no public uploads, no ads, no payouts, no identity provider, and no foundation entity yet. A local mock Shield issuer/verifier and a localhost passkey prototype exist in `shield/`. A clickable EverCommons UX shell exists at `evercommons/prototype/`. Recovery after device loss is not implemented.
+Pre-alpha public proof. No user accounts, no public uploads, no ads, no payouts, no identity provider, and no foundation entity yet. A local mock Shield issuer/verifier and a localhost passkey prototype exist in `shield/`. A clickable EverCommons UX shell exists at `evercommons/prototype/`. A local media stub exists at `evercommons/media/` with the upload kill switch on. Recovery after device loss is not implemented.

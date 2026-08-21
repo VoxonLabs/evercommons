@@ -1,0 +1,10 @@
+{
+  "name": "@voxonlabs/evercommons-media-stub",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Local-only EverCommons media pipeline stub. No public storage or CDN.",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

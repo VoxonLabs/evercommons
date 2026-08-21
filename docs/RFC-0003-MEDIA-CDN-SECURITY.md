@@ -4,6 +4,26 @@ Status: draft.
 
 EverCommons is media-heavy by design. That makes media handling one of the highest-risk parts of the whole project.
 
+## Local stub status
+
+An in-memory fake-file pipeline exists at `evercommons/media/`. Public uploads stay disabled. The kill switch defaults to on.
+
+Run:
+
+```bash
+cd evercommons/media
+npm test
+```
+
+The stub:
+
+- Rejects unauthenticated slots, bad types, size/duration overflow, and quota exhaustion.
+- Stores raw bytes only in private zones.
+- Publishes processed derivatives only, and only after a moderator action.
+- Records a CDN purge log on deletion. There is no real CDN.
+
+It does not decode real images or video, strip real EXIF, or talk to Cloudflare.
+
 The rule is simple:
 
 ```text
@@ -346,15 +366,15 @@ For Cloudflare, evaluate:
 
 ## MVP Build Order
 
-1. Keep public uploads disabled.
-2. Draft media data inventory.
-3. Draft threat model for upload, processing, delivery, deletion, and cost abuse.
-4. Define media state machine.
-5. Define storage zones and naming rules.
-6. Build a local-only upload stub with fake files and no public storage.
-7. Add tests for file type, size, state transitions, authorization, deletion, and CDN purge assumptions.
-8. Evaluate Cloudflare R2/Images/Stream against free/low-cost and lock-in constraints.
-9. Only then build a closed pilot upload path.
+1. Keep public uploads disabled. Still true.
+2. Draft media data inventory. Done: `evercommons/media/DATA_INVENTORY.md`.
+3. Draft threat model for upload, processing, delivery, deletion, and cost abuse. Done: `evercommons/media/THREAT_MODEL.md`.
+4. Define media state machine. Done: `evercommons/media/src/states.js`.
+5. Define storage zones and naming rules. Done: `evercommons/media/src/zones.js`.
+6. Build a local-only upload stub with fake files and no public storage. Done: `evercommons/media/src/pipeline.js`.
+7. Add tests for file type, size, state transitions, authorization, deletion, and CDN purge assumptions. Done: `evercommons/media/test/pipeline.test.js`.
+8. Evaluate Cloudflare R2/Images/Stream against free/low-cost and lock-in constraints. Drafted, not approved: `evercommons/media/PROVIDER_EVAL.md`.
+9. Only then build a closed pilot upload path. Not started.
 
 ## Stop Gate Before Public Uploads
 
@@ -378,7 +398,10 @@ Do not enable public uploads until all are true:
 - OWASP File Upload Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/File_Upload_Cheat_Sheet.html
 - OWASP Input Validation Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
 - OWASP Content Security Policy Cheat Sheet: https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html
-- Cloudflare R2 presigned URLs: https://developers.cloudflare.com/r2/api/s3/presigned-urls/
 - Cloudflare R2 public buckets: https://developers.cloudflare.com/r2/buckets/public-buckets/
+- Cloudflare R2 presigned URLs: https://developers.cloudflare.com/r2/api/s3/presigned-urls/
+- Cloudflare R2 pricing, including free tier and egress note: https://developers.cloudflare.com/r2/pricing/
+- Cloudflare Images pricing: https://developers.cloudflare.com/images/pricing/
+- Cloudflare Stream pricing (updated 21 April 2026): https://developers.cloudflare.com/stream/pricing/
 - Cloudflare Images direct creator uploads: https://developers.cloudflare.com/images/storage/upload-images/direct-creator-upload/
 - Cloudflare Stream secure viewing: https://developers.cloudflare.com/stream/viewing-videos/securing-your-stream/

@@ -6,9 +6,9 @@ This file tells future AI sessions where to start, where to stop, and what evide
 
 ## Current Phase
 
-Current recommended phase: **Phase 4 - media/CDN local stubs**, still no public uploads.
+Current recommended phase: **Phase 5 - EverCommons technical architecture**, still no public uploads or production backend.
 
-Phase 3 clickable UX exists at `evercommons/prototype/`. Phase 1–2 Shield work remains mock-only. Recovery after device loss is not implemented.
+Phase 4 local media stub exists at `evercommons/media/`. Kill switch stays on. R2/Images/Stream are not approved. Recovery after device loss is not implemented.
 
 ## Phase Rules
 
@@ -133,7 +133,32 @@ Evidence:
 
 ## Phase 4: Media and CDN Security Architecture
 
-Status: RFC exists. Next work is threat-model detail and local stubs, not public uploads.
+Status: local stub complete. No public uploads. No Cloudflare media product enabled.
+
+Work scope:
+
+- Read and update `docs/RFC-0003-MEDIA-CDN-SECURITY.md`.
+- Draft media data inventory.
+- Draft upload, processing, CDN, deletion, moderation, and cost-abuse threat model.
+- Define storage zones: intake, processing, public derivatives, restricted derivatives, moderation evidence, and backup.
+- Evaluate Cloudflare R2, Images, and Stream against zero-cost/low-cost, security, export, deletion, and lock-in constraints.
+- Build only local stubs. No public uploads.
+
+Stop gate:
+
+- Threat model exists.
+- Raw uploads are designed as private/quarantined.
+- Public media is designed as processed derivatives only.
+- CDN purge/deletion path is defined.
+- Upload quotas, cost caps, and kill switch are defined.
+- Moderation/report/appeal state machine exists.
+- No public upload path exists.
+
+Evidence:
+
+- `evercommons/media/`
+- `cd evercommons/media && npm test`
+- `evercommons/media/PROVIDER_EVAL.md` (providers not approved)
 
 Work scope:
 
@@ -156,7 +181,7 @@ Stop gate:
 
 ## Phase 5: EverCommons Technical Architecture
 
-Status: blocked until Phase 1, Phase 3, and Phase 4 gates pass.
+Status: unblocked for an architecture draft. No production backend, accounts, or uploads.
 
 Work scope:
 
