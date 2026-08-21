@@ -16,6 +16,9 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 ## What is here
 
 - `evercommons/` - static campaign site; no build step, backend, or paid service required.
+- `index.html` - VoxonLabs parent homepage.
+- `join.html` - public intake page for contributors, creators, organizations, universities and reviewers.
+- `support.html` - support and future donation-readiness page.
 - `_headers` - Cloudflare Pages static hosting rules.
 - `docs/MANIFESTO.md` - short public manifesto.
 - `docs/FOUNDING_CHARTER.md` - initial mission and governance commitments.

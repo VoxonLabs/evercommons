@@ -60,6 +60,22 @@ Infrastructure issue:
 https://github.com/VoxonLabs/evercommons/issues/new?template=infrastructure-sponsor.yml
 ```
 
+## Universities, Professors and Public-Interest Labs
+
+EverCommons needs research-minded contributors before it needs scale. Useful university support includes safety review, moderation process design, privacy threat modelling, sustainability measurement, creator-economics review, accessibility testing and student projects.
+
+Start with a public issue unless the topic is sensitive:
+
+```text
+https://github.com/VoxonLabs/evercommons/issues/new?template=infrastructure-sponsor.yml
+```
+
+## Donation Interest
+
+Cash donation collection is not active yet. The project should first establish a fiscal host or legal entity, publish use-of-funds rules, and explain whether donations are tax-deductible.
+
+Until then, support can take the form of measured infrastructure, review, research, design, engineering and creator participation.
+
 ## Healthy Digital Society Framing
 
 Use this when explaining the larger purpose:
