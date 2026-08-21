@@ -29,14 +29,14 @@ Initial EverCommons public proof
 The repository should include:
 
 - Static site in `evercommons/`
-- Cloudflare Pages rules in `_headers` and `_redirects`
+- Cloudflare Pages rules in `_headers`
 - Public docs in `docs/`
 - GitHub issue templates in `.github/ISSUE_TEMPLATE/`
 - Contribution, security, and conduct policies
 
-## 3. Connect Cloudflare Pages
+## 3. Connect Cloudflare Pages for VoxonLabs
 
-In Cloudflare Pages, connect the GitHub repository and use:
+In Cloudflare Pages, connect the GitHub repository for the parent site and use:
 
 ```text
 Framework preset: None
@@ -47,17 +47,32 @@ Production branch: main
 
 This project does not need a package manager, build command, server, database, analytics, or paid service.
 
-## 4. Attach the Domain
+## 4. Connect Cloudflare Pages for EverCommons
 
-Preferred public URL:
+If you want `evercommons.voxonlabs.com` to open the EverCommons page directly, create a second Cloudflare Pages project from the same repository:
 
 ```text
-https://voxonlabs.com/evercommons/
+Framework preset: None
+Build command: empty
+Build output directory: evercommons
+Production branch: main
+Custom domain: evercommons.voxonlabs.com
 ```
 
-If Cloudflare Pages requires a project subdomain first, launch there temporarily and attach the custom domain after DNS is ready.
+This avoids making the parent VoxonLabs homepage and the EverCommons project fight over the same root path.
 
-If the domain apex already serves another site, keep EverCommons as a path or use a subdomain such as:
+## 5. Attach the Domains
+
+Preferred public URLs:
+
+```text
+https://voxonlabs.com/
+https://evercommons.voxonlabs.com/
+```
+
+If Cloudflare Pages requires project subdomains first, launch there temporarily and attach custom domains after DNS is ready.
+
+If the domain apex already serves another site, either keep the existing site until you are ready to move it or use:
 
 ```text
 https://evercommons.voxonlabs.com/
@@ -65,18 +80,19 @@ https://evercommons.voxonlabs.com/
 
 Do not buy another domain for this phase.
 
-## 5. Verify Production
+## 6. Verify Production
 
 After deployment, check:
 
-- `/` routes to `/evercommons/`
-- `/evercommons/` loads CSS and JavaScript
+- `voxonlabs.com` opens the VoxonLabs parent homepage
+- `evercommons.voxonlabs.com` opens EverCommons directly if configured as a second Pages project
+- `/evercommons/` loads CSS and JavaScript when served from the parent project
 - GitHub issue links open the intended templates
 - Docs links open correctly from the deployed site
 - No analytics, pixels, tracking scripts, paid dependencies, or third-party forms are present
 - Public copy says EverCommons is a working name pending formal clearance
 
-## 6. First Public Post
+## 7. First Public Post
 
 Use restrained wording:
 

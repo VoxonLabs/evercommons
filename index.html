@@ -4,13 +4,141 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>VoxonLabs</title>
-    <meta http-equiv="refresh" content="0; url=./evercommons/" />
-    <meta name="description" content="VoxonLabs project hub." />
+    <meta
+      name="description"
+      content="VoxonLabs builds public-interest digital alternatives with privacy, open-source discipline, safety, and sustainability at the core."
+    />
+    <link rel="stylesheet" href="./evercommons/styles.css" />
   </head>
-  <body>
-    <main>
-      <h1>VoxonLabs</h1>
-      <p><a href="./evercommons/">Open EverCommons</a></p>
+  <body class="voxon-home">
+    <canvas id="commons-canvas" aria-hidden="true"></canvas>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="VoxonLabs home">
+        <span class="brand-mark">VL</span>
+        <span>
+          <strong>VoxonLabs</strong>
+          <small>public-interest systems</small>
+        </span>
+      </a>
+      <nav aria-label="Primary">
+        <a href="#principles">Principles</a>
+        <a href="#projects">Projects</a>
+        <a href="#ecosystem">Ecosystem</a>
+        <a class="nav-action" href="./evercommons/">EverCommons</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero voxon-hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">VoxonLabs</p>
+          <h1 id="hero-title">Better defaults for digital society.</h1>
+          <p class="lede">
+            We build public-interest alternatives where the current internet asks people to trade privacy, safety, dignity, or sustainability for basic connection.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="./evercommons/">Open EverCommons</a>
+            <a class="button secondary" href="./docs/COMMONS_RULES.md">Read Commons Rules</a>
+          </div>
+        </div>
+
+        <aside class="status-panel" aria-label="VoxonLabs position">
+          <div>
+            <span class="status-dot"></span>
+            <strong>Build only where needed</strong>
+            <small>No clone-for-clone's-sake projects</small>
+          </div>
+          <dl>
+            <div>
+              <dt>Privacy</dt>
+              <dd>Default</dd>
+            </div>
+            <div>
+              <dt>Core</dt>
+              <dd>Open source</dd>
+            </div>
+            <div>
+              <dt>Growth</dt>
+              <dd>Capacity-gated</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="band compact" id="principles" aria-labelledby="principles-title">
+        <div class="section-heading">
+          <p class="eyebrow">Operating stance</p>
+          <h2 id="principles-title">We do not compete with healthy public-interest technology.</h2>
+          <p>
+            When a strong privacy-preserving or open-source project already serves people well, we respect it, use it, and point people toward it. VoxonLabs builds where there is a real gap: social media, creator economics, child-aware safety, transparent discovery, and healthier digital campaigns.
+          </p>
+        </div>
+        <div class="standard-grid" aria-label="VoxonLabs principles">
+          <article>
+            <strong>Respect Signal</strong>
+            <p>Private messaging already has a serious public-interest standard. We do not need a WhatsApp clone to prove our mission.</p>
+          </article>
+          <article>
+            <strong>Build the missing social layer</strong>
+            <p>The first gap is an open photo/video network that protects people, creators, and communities without surveillance economics.</p>
+          </article>
+          <article>
+            <strong>Make rules portable</strong>
+            <p>Commons Rules should become the shared standard every VoxonLabs project follows: privacy, openness, safety, portability, and public benefit.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="band product" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <p class="eyebrow">First project</p>
+          <h2 id="projects-title">EverCommons starts with the social problem.</h2>
+          <p>
+            EverCommons Social is the first product concept: an open-source photo/video network for real people, creators, communities, and public-interest projects. It starts small, publishes its rules, and grows only when capacity, moderation, privacy, and economics are ready.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="./evercommons/">Visit EverCommons</a>
+            <a class="button secondary" href="https://github.com/VoxonLabs/evercommons">GitHub</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="band influences" id="ecosystem" aria-labelledby="ecosystem-title">
+        <div class="section-heading">
+          <p class="eyebrow">Ecosystem respect</p>
+          <h2 id="ecosystem-title">Inspired by the projects that made public technology credible.</h2>
+          <p>
+            Signal, GitHub, VideoLAN, and many open-source communities demonstrate useful lessons: privacy discipline, public collaboration, durable media infrastructure, and long-term maintenance. These are references of respect only; no endorsement or partnership is implied.
+          </p>
+        </div>
+        <div class="influence-grid" aria-label="Public technology lessons">
+          <article>
+            <span>Signal</span>
+            <p>Use excellent privacy-preserving messaging instead of rebuilding it without a clear reason.</p>
+          </article>
+          <article>
+            <span>GitHub</span>
+            <p>Make project decisions, review, issues, and contributions visible enough for people to inspect.</p>
+          </article>
+          <article>
+            <span>VideoLAN</span>
+            <p>Build media technology that remains useful, portable, and community-maintained over time.</p>
+          </article>
+          <article>
+            <span>Commons Rules</span>
+            <p>Turn values into a repeatable standard before building more products.</p>
+          </article>
+        </div>
+      </section>
     </main>
+
+    <footer>
+      <span>VoxonLabs incubates public-benefit projects. EverCommons is the first proof.</span>
+      <a href="./docs/BRAND_ARCHITECTURE.md">Brand</a>
+      <a href="./SECURITY.md">Security</a>
+    </footer>
+
+    <script src="./evercommons/app.js"></script>
   </body>
 </html>

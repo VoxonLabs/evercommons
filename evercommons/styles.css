@@ -157,6 +157,12 @@ h1 {
   letter-spacing: 0;
 }
 
+.voxon-hero h1 {
+  max-width: 13ch;
+  font-size: clamp(3.4rem, 9vw, 8.4rem);
+  line-height: 0.94;
+}
+
 .lede {
   max-width: 820px;
   margin-bottom: 28px;

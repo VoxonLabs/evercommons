@@ -7,15 +7,16 @@ Zero-cost starter workspace for **EverCommons**, a public-benefit digital common
 Use the domain you already own:
 
 ```text
-https://voxonlabs.com/evercommons
+https://voxonlabs.com
+https://evercommons.voxonlabs.com
 ```
 
-This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** as the project and movement brand.
+This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** as the first project and movement brand.
 
 ## What is here
 
 - `evercommons/` - static campaign site; no build step, backend, or paid service required.
-- `_headers` and `_redirects` - Cloudflare Pages static hosting rules.
+- `_headers` - Cloudflare Pages static hosting rules.
 - `docs/MANIFESTO.md` - short public manifesto.
 - `docs/FOUNDING_CHARTER.md` - initial mission and governance commitments.
 - `docs/PARTNER_CHARTER.md` - rules for sponsors, infrastructure providers, and partners.
@@ -53,13 +54,18 @@ http://127.0.0.1:8080/evercommons/
 
 1. Publish this as a public GitHub repository.
 2. Connect the repository to Cloudflare Pages.
-3. Use these Cloudflare Pages settings:
+3. Use these Cloudflare Pages settings for the VoxonLabs parent site:
    - Framework preset: `None`
    - Build command: empty
    - Build output directory: `/`
    - Production branch: `main`
-4. Point `voxonlabs.com` or a subdomain to the Cloudflare Pages project.
-5. Keep the project publicly available at `/evercommons/`.
+4. Use a second Cloudflare Pages project for EverCommons if you want `evercommons.voxonlabs.com` to open the project directly:
+   - Same repository
+   - Framework preset: `None`
+   - Build command: empty
+   - Build output directory: `evercommons`
+   - Production branch: `main`
+5. Keep EverCommons available at `evercommons.voxonlabs.com` or `/evercommons/`.
 6. Update the GitHub issue links if the public repository is not `VoxonLabs/evercommons`.
 7. Keep EverCommons as the working public name until formal trademark and entity checks are complete.
 8. Do not claim official partnerships until written agreements exist.
