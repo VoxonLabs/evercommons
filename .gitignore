@@ -3,6 +3,7 @@ Thumbs.db
 node_modules/
 dist/
 build/
+.wrangler/
 .env
 .env.*
 !.env.example
