@@ -8,3 +8,17 @@ build/
 .env.*
 !.env.example
 shield/.keys/
+
+# Android / Gradle local artifacts (never deploy to Pages)
+android/.gradle/
+android/**/build/
+android/local.properties
+android/*.iml
+android/.idea/
+android/app/src/**/generated/baselineProfiles/*.txt
+*.apk
+*.aab
+*.ap_
+*.dex
+captures/
+.cxx/

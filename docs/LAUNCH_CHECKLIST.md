@@ -97,9 +97,18 @@ After deployment, check:
 The current zero-cost deployment can also be run by direct Wrangler uploads instead of Git-connected auto-deploys:
 
 ```bash
-npx wrangler pages deploy . --project-name voxonlabs-home --branch main
-npx wrangler pages deploy evercommons --project-name evercommons-social --branch main
+# Always deploy from a clean bundle. Exclude android/, .git, .env, .wrangler, node_modules, and local caches.
+rsync -a --exclude '.git' --exclude '.env' --exclude '.env.*' --exclude '.wrangler' \
+  --exclude 'node_modules' --exclude 'android' --exclude 'shield/.keys' --exclude '.cursor' \
+  ./ /tmp/voxonlabs-home-bundle/
+npx wrangler pages deploy /tmp/voxonlabs-home-bundle --project-name voxonlabs-home --branch main
+
+rsync -a --exclude 'node_modules' --exclude '.wrangler' --exclude '.env' --exclude '.env.*' \
+  evercommons/ /tmp/evercommons-bundle/
+npx wrangler pages deploy /tmp/evercommons-bundle --project-name evercommons-social --branch main
 ```
+
+Do not deploy the repository root with Gradle/`android/` artifacts included. Android sources are never part of the static sites.
 
 If Cloudflare Pages is later connected to GitHub, keep the same output directories and let `main` deploy automatically. Until then, push to GitHub first, then run the direct deployments so production matches the repository.
 
