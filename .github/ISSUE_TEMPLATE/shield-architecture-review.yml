@@ -13,9 +13,13 @@ body:
       label: Review area
       options:
         - Minimal assertions
+        - Mock vs production labeling
+        - Extraction readiness
         - Pairwise pseudonymous identifiers
         - Verification vs authentication
         - Passkeys / WebAuthn
+        - Recovery / multi-device
+        - Provider adapters (CIE, SPID, EUDI Wallet)
         - Credential formats
         - Provider boundary
         - Uniqueness / one-human problem

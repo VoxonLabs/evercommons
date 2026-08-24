@@ -84,6 +84,8 @@ It does not:
 
 A localhost passkey prototype now exists at `shield/src/passkeys/`. Login and Shield assertions are separate HTTP steps. See `shield/docs/PASSKEY_THREAT_MODEL.md`.
 
+Architecture governance for future Shield work is now in `docs/ARCHITECTURE_GOVERNANCE.md`. Production authentication, recovery, and provider-adapter architecture is in `docs/RFC-0006-AUTH-RECOVERY.md`. That RFC does not authorize recovery code or CIE/SPID/EUDI integration. Shield must be treated as a near-term extraction target once any real provider adapter, HTTPS API, JWKS endpoint, signing key, database, SDK release, recovery process, secret, or deployment exists; see `docs/SHIELD_EXTRACTION_CHECKLIST.md`.
+
 ## High-Level Architecture
 
 ```text
@@ -161,6 +163,19 @@ same account holder returning today
 
 The default authentication direction should be passkeys/WebAuthn, not passwords as the primary long-term system. ID proofing should establish trust only when needed; it should not become the login ritual.
 
+Passkeys do not remove the need for account recovery. A mature production design needs multiple authenticators, synced vs device-bound policy, optional hardware security keys, session revocation, lost-device handling, recovery notifications, and abuse tests before public accounts.
+
+Locked plan:
+
+| Layer | Role |
+| --- | --- |
+| Passkeys | Day-to-day phishing-resistant login and session continuity. Prefer syncable passkeys for public usability, encourage a second authenticator, and allow optional hardware security keys. |
+| Shield verification | Occasional human, adult, organization, uniqueness, or eligibility proof. Provider evidence goes only to Shield; applications receive short-lived minimal assertions. |
+| Recovery | Explicit threat model before Phase 6. Recovery likely combines backup authenticator or recovery code, re-proofing for stronger accounts, cooldown/review where appropriate, notification, and session revocation. |
+| Anti-abuse | Rate limits, invite/capacity gates, upload quotas, app-local risk controls, reports, moderation, and appeals. Do not require CIE, SPID, EUDI Wallet, or any government identity on every login. |
+
+This means Shield uses progressive access. Low-risk use should not need identity proof. Higher-risk actions can request fresh Shield assertions. Recovery and creator/business features require stronger review and slower paths.
+
 ### 4. Identity providers stay outside the application boundary
 
 The application should route the user to a Shield-controlled verification session. The external provider returns a signed result to Shield, not to the application.
@@ -168,6 +183,10 @@ The application should route the user to a Shield-controlled verification sessio
 Shield then strips the result to the minimal facts the application is allowed to know.
 
 Version 1 may need provider receipts and operational metadata for audit and fraud handling. It should still avoid retaining raw document images or full provider packets unless a narrow legal and security review explicitly justifies it.
+
+CIE, SPID, eIDAS wallets, mobile driver's licenses, passport vendors, age-estimation vendors, passkey providers, and future credential wallets are possible provider adapters. None of them should be hard-coded as the global identity architecture. Shield should normalize provider evidence internally, then issue minimal app assertions.
+
+EUDI Wallets, CIE, SPID, and similar systems are provider options for supported jurisdictions, not universal dependencies. The global strategy is multiple adapters plus no-provider access for low-risk features.
 
 ### 5. The credential is the valuable object
 
@@ -245,6 +264,8 @@ Shield safety controls can include:
 - Moderation reasons and appeals.
 
 They should not become a cross-app surveillance profile. Avoid persistent device fingerprinting, indefinite IP history, and hidden behavioral dossiers across applications.
+
+Device attestation may be considered only for narrow, documented abuse cases. It must not become default fingerprinting, a general eligibility check, or a substitute for moderation, rate limits, and appealable enforcement.
 
 ### 10. Safety is modular
 

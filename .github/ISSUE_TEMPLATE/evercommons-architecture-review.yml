@@ -6,14 +6,17 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this for public review of RFC-0004. Do not post secrets, personal data, exploit payloads, or private abuse evidence. This RFC does not set a launch date and does not enable public uploads.
-    10|  - type: dropdown
+        Use this for public review of RFC-0004 and RFC-0005. Do not post secrets, personal data, exploit payloads, or private abuse evidence. These RFCs do not set a launch date and do not enable public uploads.
+  - type: dropdown
     id: area
     attributes:
       label: Review area
       options:
         - Repo split timing
+        - Proof vs product labeling
         - Shield vs app boundary
+        - Shield extraction readiness
+        - Client / Android stack (RFC-0005)
         - Feed / discovery ranking
         - Upload integration
         - Storage path A vs B

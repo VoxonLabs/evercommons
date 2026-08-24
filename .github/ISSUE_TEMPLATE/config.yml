@@ -15,6 +15,12 @@ contact_links:
   - name: Review EverCommons architecture
     url: https://github.com/VoxonLabs/evercommons/blob/main/docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md
     about: Start here for backend, feed, media integration, cost, and repo-split decisions.
+  - name: Review Android client stack
+    url: https://github.com/VoxonLabs/evercommons/blob/main/docs/RFC-0005-ANDROID-CLIENT-STACK.md
+    about: Start here for the Android-first Compose client decision and offline proof bounds.
+  - name: Review production auth and recovery architecture
+    url: https://github.com/VoxonLabs/evercommons/blob/main/docs/RFC-0006-AUTH-RECOVERY.md
+    about: Start here for multi-device login, device-loss recovery, and provider-adapter rules. Recovery is not implemented.
   - name: Private security reports
     url: https://github.com/VoxonLabs/evercommons/blob/main/SECURITY.md
     about: Do not post private vulnerabilities or sensitive data in public issues.

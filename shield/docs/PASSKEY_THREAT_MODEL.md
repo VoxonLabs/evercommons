@@ -67,7 +67,7 @@ Do not open this server on `0.0.0.0` or a LAN IP. Those origins are not secure c
 
 Do not implement the following in this repo until a stronger security review has written an approved design. These are the production-auth problems, not leftover chores.
 
-1. **Device-loss recovery.** Synced platform passkeys, a second registered passkey, backup authenticators, and account recovery all create new unlinkable-identity and social-engineering risks. A wrong recovery path reintroduces passwords, email magic links, or SMS. This prototype returns HTTP 501 on `/api/recovery` on purpose.
+1. **Device-loss recovery.** Synced platform passkeys, a second registered passkey, backup authenticators, and account recovery all create new unlinkable-identity and social-engineering risks. A wrong recovery path reintroduces passwords, email magic links, or SMS. This prototype returns HTTP 501 on `/api/recovery` on purpose. Architecture only: `docs/RFC-0006-AUTH-RECOVERY.md`.
 
 2. **Attestation and authenticator trust.** `direct` attestation, manufacturer allowlists, and enterprise authenticator policy can deanonymize devices and lock out users. Do not turn attestation on as a default.
 
@@ -83,7 +83,7 @@ Do not implement the following in this repo until a stronger security review has
 
 8. **Combining recovery with Shield assertions.** Recovery that proves "same human" without linking applications is the uniqueness research problem from RFC-0002. It is not solved by adding a backup code.
 
-If the next task is any item in this list, switch to a high-reasoning model and start from this file plus `docs/RFC-0002-VOXON-SHIELD.md`. Do not invent a recovery protocol in a thin pass.
+If the next task is any item in this list, switch to a high-reasoning model and start from this file plus `docs/RFC-0002-VOXON-SHIELD.md` and `docs/RFC-0006-AUTH-RECOVERY.md`. Do not invent a recovery protocol in a thin pass.
 
 ## Sources
 

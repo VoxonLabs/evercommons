@@ -1,0 +1,46 @@
+name: Proof checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  shield:
+    name: Shield local proof
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: shield
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: shield/package-lock.json
+      - run: npm ci
+      - run: npm test
+
+  prototype:
+    name: EverCommons prototype checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: node --test evercommons/prototype/check.test.js
+
+  media:
+    name: Media stub tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: evercommons/media
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm test
