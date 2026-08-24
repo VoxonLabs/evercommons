@@ -18,6 +18,8 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 ## What is here
 
 - `AGENTS.md` - required operating protocol for future AI coding sessions.
+- `docs/CURRENT_STATE.md` - living snapshot: phase, next safe step, blockers. Read this first in every new session.
+- `.cursor/rules/` - always-on Cursor rules for the session loop and stop gates.
 - `evercommons/` - static EverCommons campaign site; no build step, backend, or paid service required.
 - `evercommons/prototype/` - clickable Social UX shell. No real accounts or uploads.
 - `evercommons/media/` - local media pipeline stub. Kill switch on. No public storage.
@@ -33,15 +35,22 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 - `shield/` - local mock-only Shield issuer, verifier, assertion schema, and tests. Not a production identity system.
 - `docs/RFC-0003-MEDIA-CDN-SECURITY.md` - media upload, processing, storage, CDN, moderation, and cost-abuse architecture.
 - `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md` - EverCommons technical architecture draft. No launch date.
+- `docs/RFC-0005-ANDROID-CLIENT-STACK.md` - Android-first client stack. Offline proof only.
+- `android/` - offline Jetpack Compose vertical slice. No accounts, uploads, or network.
+- `docs/RFC-0006-AUTH-RECOVERY.md` - production authentication, recovery, and identity-assurance architecture. Not implemented.
+- `docs/SHIELD_EXTRACTION_CHECKLIST.md` - when Shield should become its own repo, and why it should not yet.
 - `docs/PHASED_BUILD_PLAN.md` - start/stop roadmap for future work.
 - `docs/ENGINEERING_SECURITY_BASELINE.md` - security, privacy, UX, dependency, and deployment baseline.
 - `docs/REPOSITORY_STRATEGY.md` - repo/server separation rules for Shield, EverCommons, and future apps.
+- `docs/ARCHITECTURE_GOVERNANCE.md` - architecture decision protocol, Shield provider-adapter rules, and quality watcher gates.
+- `docs/AUTONOMOUS_EXECUTION_RULES.md` - task-packet, UI/UX, security, privacy, outreach, and AI-autonomy rules for mature execution.
 - `docs/AI_SESSION_HANDOFF.md` - pasteable prompt for continuing in a fresh AI session.
 - `docs/BRAND_ARCHITECTURE.md` - naming, domain, and foundation timing decision.
 - `docs/COMMONS_RULES.md` - future compatibility standard for public-interest projects.
 - `docs/LAUNCH_CHECKLIST.md` - Cloudflare Pages launch steps.
 - `docs/OUTREACH.md` - first public outreach copy.
 - `.github/ISSUE_TEMPLATE/` - zero-cost GitHub issue intake.
+- `.github/workflows/proof-checks.yml` - CI for Shield, prototype, and media local proofs.
 - `CODE_OF_CONDUCT.md` - contributor behavior baseline.
 - `SECURITY.md` - security reporting and data-handling baseline.
 - `CONTRIBUTING.md` - how early contributors can help.
@@ -89,7 +98,7 @@ Then open `http://localhost:8787`. Do not expose that server.
 Start every AI/coding session with:
 
 ```text
-Read AGENTS.md, README.md, docs/PHASED_BUILD_PLAN.md, docs/ENGINEERING_SECURITY_BASELINE.md, docs/REPOSITORY_STRATEGY.md, and the relevant RFC before coding.
+Read AGENTS.md and docs/CURRENT_STATE.md first, then README.md, docs/PHASED_BUILD_PLAN.md, docs/ENGINEERING_SECURITY_BASELINE.md, docs/REPOSITORY_STRATEGY.md, docs/ARCHITECTURE_GOVERNANCE.md, docs/AUTONOMOUS_EXECUTION_RULES.md for broad/strategic/UI/autonomous work, and the relevant RFC before coding. Execute the Next safe step in docs/CURRENT_STATE.md unless the user named a different task. Update CURRENT_STATE.md before finishing.
 ```
 
 For a copy/paste prompt, use:
@@ -130,4 +139,4 @@ If the repository is published under another owner or name, update the links in 
 
 ## Current status
 
-Pre-alpha public proof. No user accounts, no public uploads, no ads, no payouts, no identity provider, and no foundation entity yet. A local mock Shield issuer/verifier and a localhost passkey prototype exist in `shield/`. A clickable EverCommons UX shell exists at `evercommons/prototype/`. A local media stub exists at `evercommons/media/` with the upload kill switch on. Technical architecture is drafted in `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md`. Public architecture review: https://github.com/VoxonLabs/evercommons/issues/1. Recovery after device loss is not implemented. No public launch date.
+Pre-alpha public proof. No user accounts, no public uploads, no ads, no payouts, no identity provider, and no foundation entity yet. A local mock Shield issuer/verifier and a localhost passkey prototype exist in `shield/`. A clickable EverCommons UX shell exists at `evercommons/prototype/`. A local media stub exists at `evercommons/media/` with the upload kill switch on. Technical architecture is drafted in `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md`. Android client stack is drafted in `docs/RFC-0005-ANDROID-CLIENT-STACK.md` with an offline Compose proof under `android/`. Production auth, recovery, and provider adapters are drafted in `docs/RFC-0006-AUTH-RECOVERY.md` and are not implemented; `POST /api/recovery` still returns 501. Shield stays in this repo until `docs/SHIELD_EXTRACTION_CHECKLIST.md` says otherwise. Public architecture review: https://github.com/VoxonLabs/evercommons/issues/1. No public launch date.

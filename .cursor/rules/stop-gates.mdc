@@ -1,0 +1,22 @@
+---
+description: Hard stop gates for VoxonLabs. Recovery, provider login, public accounts, and Shield split are blocked.
+alwaysApply: true
+---
+
+# Stop gates
+
+Do not implement:
+
+- Account recovery, recovery codes, or `/api/recovery` except HTTP 501
+- CIE, SPID, EUDI Wallet, or other provider login inside EverCommons
+- Public accounts, public uploads, CDN delivery, DMs, ads, payouts, or minors support
+- A new `voxon-shield` repo until `docs/SHIELD_EXTRACTION_CHECKLIST.md` fires
+- Shared user data between Shield and apps, or across future apps
+
+`docs/RFC-0006-AUTH-RECOVERY.md` is architecture only. Phase 6 is blocked.
+
+Android proof stays offline: no network client, no dangerous permissions, no uploads.
+
+If the task is recovery protocol, uniqueness/"one human", or a provider integration, stop and require a high-reasoning review. Do not invent cryptography or compliance claims.
+
+For broad, strategic, UI/product, investor-facing, or autonomous-work requests, apply `docs/AUTONOMOUS_EXECUTION_RULES.md`. Do not mark UI/product work done without acceptance criteria, mobile/desktop evidence, accessibility basics, honest proof labels, and `docs/CURRENT_STATE.md` updated.

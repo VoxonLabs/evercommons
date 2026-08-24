@@ -1,0 +1,16 @@
+---
+description: Start-to-finish VoxonLabs session loop. Orient from current state, do one safe step, leave a handoff.
+alwaysApply: true
+---
+
+# Session loop
+
+1. Before planning or editing, read `AGENTS.md` and `docs/CURRENT_STATE.md`.
+2. For broad, strategic, UI/product, investor-facing, or autonomous-work requests, read `docs/AUTONOMOUS_EXECUTION_RULES.md`.
+3. If the user is vague ("continue", "let's do it"), execute the **Next safe step** in `docs/CURRENT_STATE.md`. Do not invent a more exciting step.
+4. One bounded step per session unless the user lists a clear sequence.
+5. Turn broad work into a task packet: goal, boundary, data/secrets, source standards, stop gates, acceptance, verification, handoff.
+6. Run stop gates in `AGENTS.md` before identity, recovery, uploads, providers, new repos, or paid services.
+7. Before finishing, update `docs/CURRENT_STATE.md`: what changed, what was verified, next safe step, blockers.
+8. End with the finish format in `AGENTS.md`.
+9. Commit, push, or deploy only when the user asks, using the commit clusters in `docs/CURRENT_STATE.md`. Never one vague dump of Android + Shield + prototype + docs.

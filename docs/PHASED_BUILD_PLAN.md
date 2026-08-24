@@ -4,11 +4,15 @@ Status: active operating roadmap.
 
 This file tells future AI sessions where to start, where to stop, and what evidence is required before moving forward.
 
+For *what to do in this session*, read `docs/CURRENT_STATE.md` first. This file is the roadmap. `CURRENT_STATE.md` is the living snapshot. If they disagree about the immediate next step, `CURRENT_STATE.md` wins, then update this file in the same change.
+
 ## Current Phase
 
-Current recommended phase: **Phase 6 remains blocked.** Architecture draft is RFC-0004. Next product work is public review, not a backend.
+Current recommended phase: **Phase 5.5 Android client proof in progress; Phase 6 remains blocked.** Architecture drafts are RFC-0004, RFC-0005, and RFC-0006. Next product work is the offline native Compose proof and public review, not a backend, recovery implementation, or CIE integration.
 
-Phase 5 draft exists at `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md`. Public review: https://github.com/VoxonLabs/evercommons/issues/1. No D1, R2, Stream, public accounts, or uploads are enabled. Recovery after device loss is not implemented.
+Phase 5 draft exists at `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md`. Android client stack: `docs/RFC-0005-ANDROID-CLIENT-STACK.md`. Production auth/recovery architecture: `docs/RFC-0006-AUTH-RECOVERY.md`. Public review: https://github.com/VoxonLabs/evercommons/issues/1. No D1, R2, Stream, public accounts, or uploads are enabled. Recovery after device loss is not implemented.
+
+Strategic sequencing: Shield architecture, auth/recovery requirements, provider-adapter boundaries, and extraction readiness come before any EverCommons public accounts, uploads, or pilot work. That does not authorize provider integration or recovery code in the planning repo.
 
 ## Phase Rules
 
@@ -16,7 +20,22 @@ Phase 5 draft exists at `docs/RFC-0004-EVERCOMMONS-ARCHITECTURE.md`. Public revi
 - Do not skip gates because the idea feels exciting.
 - If a gate cannot be met with zero-cost tools, pause and document the blocker.
 - If a phase introduces personal data, public accounts, media uploads, CDN delivery, payments, ads, minors, identity proofing, or private messaging, require threat modeling first.
+- If a phase changes product boundaries, Shield, identity, authentication, recovery, providers, repos, data stores, APIs, deployments, or future apps, apply `docs/ARCHITECTURE_GOVERNANCE.md` before implementation.
+- If a task is broad, strategic, UI/product, investor-facing, or asks AI to work autonomously, apply `docs/AUTONOMOUS_EXECUTION_RULES.md` and turn it into a bounded task packet before implementation.
+- Rules may be changed when a safer architecture requires it, but the change must include rationale, sources where needed, risks, and a new stop gate.
 - Every phase ends with a handoff note: what changed, what was verified, what risks remain, and what the next model should do.
+
+## Cross-Phase Architecture Gate
+
+Before coding beyond local proofs, answer:
+
+- Which bounded context owns this: Shield, EverCommons app, media, Android, VoxonLabs site, infrastructure, or a future app?
+- Does it need a separate repo, deploy lifecycle, secrets, database, API, SDK, review surface, or legal/privacy boundary?
+- What data does it introduce, and can it be minimized?
+- What standard or maintained library should be used instead of custom security logic?
+- What tests, CI, review, and public documentation must exist before merge?
+
+If the answer is unclear, stop at an RFC, ADR, threat model, or public review issue.
 
 ## Phase 0: Public Proof and Governance Baseline
 
@@ -93,12 +112,17 @@ Work scope:
 - Create a passkey prototype for local development.
 - Keep verification separate from login.
 - Add recovery threat model before public use.
+- Lock the progressive access model: low-risk access without identity proof, passkeys for normal login, Shield assertions for higher-risk capabilities, separate recovery design, and layered anti-abuse controls.
+- Define a future production-auth RFC before any real recovery code, including multi-authenticator support, synced vs device-bound passkeys, hardware security keys, recovery codes or alternatives, repeated proofing, notifications, session revocation, and abuse tests.
+- Treat CIE, SPID, eIDAS wallets, mobile driver's licenses, passport vendors, age-estimation vendors, passkey providers, and future credential wallets as optional Shield provider adapters, not as app-level login shortcuts.
 
 Stop gate:
 
 - Local passkey registration/login works in a prototype.
 - No password-first system is introduced without explicit approval.
 - Recovery, device loss, session expiry, CSRF, and origin-bound assumptions are documented.
+- No production recovery or provider integration exists without a reviewed Shield RFC and privacy/security review.
+- No government identity, EUDI Wallet, CIE, SPID, provider proof, or device attestation is required on every login.
 
 Evidence:
 
@@ -106,6 +130,8 @@ Evidence:
 - `shield/docs/PASSKEY_THREAT_MODEL.md`
 - `cd shield && npm test` includes origin, CSRF, session, and assertion-separation cases.
 - `/api/recovery` returns 501 on purpose.
+- `docs/ARCHITECTURE_GOVERNANCE.md` governs future provider and recovery choices.
+- `docs/RFC-0006-AUTH-RECOVERY.md` is the production-auth architecture draft. It does not authorize recovery code.
 
 ## Phase 3: EverCommons UX Prototype
 
@@ -203,6 +229,38 @@ Evidence:
 - `.github/ISSUE_TEMPLATE/evercommons-architecture-review.yml`
 - Public review: https://github.com/VoxonLabs/evercommons/issues/1
 
+## Phase 5.5: Android Client Offline Proof
+
+Status: unblocked for an offline native proof. No accounts, uploads, Play publishing, or production signing.
+
+Start condition:
+
+- RFC-0004 architecture draft exists.
+- Linux workstation can run Android Studio / emulator (KVM).
+
+Work scope:
+
+- Accept RFC-0005 Android-first client stack.
+- Install Android Studio + SDK + one AVD.
+- Scaffold Jetpack Compose vertical slice from the web prototype screens.
+- Keep network, passkeys, file pickers, uploads, camera, and analytics disabled.
+- Add Compose UI tests and Macrobenchmark / Baseline Profile modules.
+- Exclude `android/` from Cloudflare Pages deploy bundles.
+
+Stop gate:
+
+- Offline app builds and launches on emulator.
+- No dangerous permissions; no network client.
+- Upload and archive-import controls remain disabled.
+- Performance measurement harness exists; Signal/Instagram-class claims require a real device later.
+- Phase 6 remains blocked on recovery, legal/privacy, moderation coverage, and media/cost gates.
+
+Evidence:
+
+- `docs/RFC-0005-ANDROID-CLIENT-STACK.md`
+- `android/` Compose proof
+- Macrobenchmark / Baseline Profile modules under `android/`
+
 ## Phase 6: Closed Adult Pilot
 
 Status: not ready.
@@ -247,11 +305,14 @@ Work scope:
 - Split into purpose-specific repositories according to `docs/REPOSITORY_STRATEGY.md`.
 - Keep Voxon Shield separate from EverCommons.
 - Give each application separate deployment, secrets, database boundary, and abuse policy.
+- Prepare each repo with README, security policy, threat model or RFC, local setup, CI, branch protection or repository rules, code scanning where supported, secret scanning where available, and dependency alerts.
+- Extract Shield first when its real boundary fires: HTTPS API, JWKS, signing keys, provider adapter, recovery process, SDK release, database, secrets, or deployment.
 
 Stop gate:
 
 - Repos have clear ownership, README, security policy, local setup, CI, and deployment docs.
 - No production database is shared across unrelated apps.
+- No messy prototype dump is copied into a new public repo without boundary cleanup.
 
 ## Phase 8: Future Applications
 
@@ -270,6 +331,7 @@ Start condition:
 - Existing healthy open-source or public-interest projects have been researched first.
 - VoxonLabs can explain why it should build rather than support an existing project.
 - Shield integration does not create cross-app tracking.
+- A short app brief or RFC defines users, exclusions, data inventory, Shield claims, safety model, moderation/appeal model, repo/deploy boundary, cost plan, and stop gate.
 
 Stop gate:
 
