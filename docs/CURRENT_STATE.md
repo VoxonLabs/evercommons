@@ -20,6 +20,7 @@ Roadmap: `docs/PHASED_BUILD_PLAN.md`. If this file and the roadmap disagree abou
 - Shield stays in this repo until `docs/SHIELD_EXTRACTION_CHECKLIST.md` fires. Do not create `VoxonLabs/voxon-shield` for optics.
 - First automated watcher: `.github/workflows/proof-checks.yml`.
 - Autonomous execution rules now live in `docs/AUTONOMOUS_EXECUTION_RULES.md` and are wired into `AGENTS.md`, `docs/ARCHITECTURE_GOVERNANCE.md`, `docs/ENGINEERING_SECURITY_BASELINE.md`, `docs/PHASED_BUILD_PLAN.md`, `docs/AI_SESSION_HANDOFF.md`, `.cursor/rules/`, and the PR template. Broad, strategic, UI/product, investor-facing, or autonomous-work requests must become bounded task packets before coding.
+- Cryptographic agility and post-quantum readiness are now governance requirements. Future production-bound identity, recovery, media storage, backups, secrets, and long-lived encrypted data need a crypto inventory, algorithm/key agility, and NIST PQC research before implementation. Do not hand-roll post-quantum cryptography.
 - Recovery, public accounts, and provider login are **not implemented**.
 
 ## Uncommitted clusters
@@ -51,6 +52,7 @@ If the user says **continue**, **let's do it**, or is vague:
 - New Shield GitHub repo
 - Backend (D1, R2, Stream, production API)
 - Signal/Instagram-class performance claims without a mid-range physical device
+- Custom cryptography, custom post-quantum identity, quantum-safe claims without evidence, or experimental PQC packages in production
 - One giant commit of Android + Shield + prototype + docs
 
 ## Checks
@@ -66,6 +68,8 @@ Android UI tests need an emulator/device. Emulator timings are not smoothness ev
 ## Last handoff
 
 Autonomous execution governance was added so future AI sessions convert broad ambition into bounded task packets with acceptance criteria, professional UI/UX evidence, security/privacy stop gates, outreach timing, and current-source research. Shield/identity foundations should be reviewed and made extractable before EverCommons moves toward public accounts, uploads, or pilot work.
+
+Post-quantum note: quantum-safe migration is a real future requirement, but the safe current action is crypto-agility, inventory, key/token versioning, and standards tracking. Do not implement custom PQC, custom passkeys, or quantum-safe identity claims in this planning repo.
 
 Verified this session:
 

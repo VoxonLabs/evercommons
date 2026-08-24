@@ -10,9 +10,14 @@ Use these as the default references and re-check them when starting security-sen
 
 - CISA Secure by Design and Secure by Default guidance: https://www.cisa.gov/securebydesign
 - CISA/FBI Product Security Bad Practices: https://www.cisa.gov/news-events/alerts/2025/01/17/cisa-and-fbi-release-updated-guidance-product-security-bad-practices
+- CISA/NIST/NSA Quantum Readiness: Migration to Post-Quantum Cryptography: https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/article/3498776/post-quantum-cryptography-cisa-nist-and-nsa-recommend-how-to-prepare-now/
 - NIST Secure Software Development Framework, SP 800-218: https://csrc.nist.gov/pubs/sp/800/218/final
 - NIST Privacy Framework: https://www.nist.gov/privacy-framework
 - NIST AI Risk Management Framework: https://www.nist.gov/itl/ai-risk-management-framework
+- NIST Post-Quantum Cryptography: https://www.nist.gov/pqc
+- NIST FIPS 203, 204, and 205 post-quantum standards: https://csrc.nist.gov/News/2024/postquantum-cryptography-fips-approved
+- NIST IR 8547, Transition to Post-Quantum Cryptography Standards: https://csrc.nist.gov/pubs/ir/8547/ipd
+- NIST NCCoE Migration to Post-Quantum Cryptography FAQ: https://pages.nist.gov/nccoe-migration-post-quantum-cryptography/
 - OWASP Application Security Verification Standard 5.0: https://owasp.org/www-project-application-security-verification-standard/
 - OWASP Software Assurance Maturity Model: https://owasp.org/www-project-samm/
 - OWASP Top 10 2025: https://owasp.org/Top10/
@@ -98,6 +103,25 @@ Never paste secrets into:
 If a secret appears publicly, assume it is compromised and rotate it.
 
 Use environment variables or platform secret stores for production. Keep `.env` local and ignored.
+
+## Cryptographic Agility and Quantum-Safety Rule
+
+Quantum-safe technology is a roadmap requirement, not a reason to invent cryptography.
+
+Use NIST-standardized post-quantum cryptography when the maintained platform, protocol, and library ecosystem supports it for the specific use case. As of this rule, the relevant NIST standards are FIPS 203 (ML-KEM key establishment), FIPS 204 (ML-DSA signatures), and FIPS 205 (SLH-DSA signatures). HQC is selected as a future backup KEM standard but is not finalized yet.
+
+Near-term rule:
+
+- Keep a cryptographic inventory for production-bound systems: protocols, algorithms, key types, key owners, certificates, signing keys, retention needs, and data flows.
+- Design for algorithm agility: key IDs, rotation, versioned token headers, documented verification policy, and a migration path from classical algorithms.
+- Prioritize post-quantum protection for long-lived confidentiality first: identity evidence, recovery evidence, private media, backups, exports, secrets, logs, and any encrypted data worth stealing now and decrypting later.
+- Prefer standard hybrid key agreement in TLS or deployment platforms when available and reviewed, such as classical plus ML-KEM hybrids. Do not make VoxonLabs dependent on one vendor's proprietary PQC path.
+- Keep Shield assertions short-lived and audience-scoped. Current ES256/JWT mock assertions are acceptable only as local proof. A production Shield signing plan must include cryptographic agility, rotation, and later PQ signature migration when JOSE, verifier libraries, and client/server support are mature.
+- Do not change WebAuthn/passkey cryptography directly. WebAuthn depends on browser, authenticator, platform, and FIDO ecosystem support. Track standards and platform support; do not create a custom passkey replacement.
+- Do not use experimental PQC packages, quantum key distribution, custom anonymous credentials, custom zero-knowledge systems, or custom "quantum-safe identity" claims in production.
+- Do not claim quantum safety, PQC compliance, or future-proof privacy unless the exact protocol, algorithm, library, platform, and verification evidence are documented.
+
+Before production identity, recovery, media storage, backups, or long-lived encrypted data, write a crypto-agility section in the relevant RFC or threat model.
 
 ## Authentication
 

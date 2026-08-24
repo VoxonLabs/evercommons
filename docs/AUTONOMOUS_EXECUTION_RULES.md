@@ -93,7 +93,10 @@ Default decisions:
 - No password-first recovery shortcut.
 - No SMS as a primary security factor.
 - No custom cryptography, identity proofing, media parsing, or payment handling.
+- No custom post-quantum cryptography, quantum-safe identity claims, quantum key distribution, or experimental crypto packages in production.
 - No unsupported compliance, certification, or bot-free claims.
+
+For quantum-safe work, do crypto-agility now: inventory cryptography, keep key and token versioning explicit, use short-lived assertions, prefer maintained protocol/library/platform support, and research NIST PQC standards before implementation. Do not claim a feature is quantum-safe unless the exact algorithms, protocols, libraries, platform support, and verification evidence are documented.
 
 ## Autonomous AI Risk Locks
 
@@ -130,7 +133,8 @@ Research is required before these workstreams move beyond local proofs:
 5. Moderation and safety: reporting, appeal, reviewer safety, evidence retention, illegal content workflows, transparency notes, and abuse of reporting.
 6. Professional UI/UX: WCAG 2.2, mobile ergonomics, dark-pattern avoidance, consent clarity, safety UX, and accessibility testing.
 7. Supply chain and repo operations: branch protection or repository rules, CodeQL, secret scanning and push protection, Dependabot, OpenSSF Scorecard, SLSA/provenance, dependency license and maintenance review.
-8. Outreach, funding, and partnerships: who can be contacted, what can be claimed, what evidence they need, and which conversations create legal, privacy, or reputational obligations.
+8. Cryptographic agility and post-quantum migration: NIST FIPS 203/204/205, NIST IR 8547, NCCoE migration guidance, TLS hybrid key agreement support, WebAuthn/FIDO platform support, JOSE/JWT library support for PQ signatures, key rotation, cryptographic inventory, and "harvest now, decrypt later" risk.
+9. Outreach, funding, and partnerships: who can be contacted, what can be claimed, what evidence they need, and which conversations create legal, privacy, or reputational obligations.
 
 ## Outreach Timing
 
@@ -155,6 +159,10 @@ Use current primary sources and re-check them when a workstream starts:
 - NIST Privacy Framework: https://www.nist.gov/privacy-framework
 - NIST AI Risk Management Framework: https://www.nist.gov/itl/ai-risk-management-framework
 - NIST Digital Identity Guidelines SP 800-63-4: https://pages.nist.gov/800-63-4/
+- NIST Post-Quantum Cryptography: https://www.nist.gov/pqc
+- NIST FIPS 203, 204, and 205 post-quantum standards: https://csrc.nist.gov/News/2024/postquantum-cryptography-fips-approved
+- NIST IR 8547, Transition to Post-Quantum Cryptography Standards: https://csrc.nist.gov/pubs/ir/8547/ipd
+- NIST NCCoE Migration to Post-Quantum Cryptography FAQ: https://pages.nist.gov/nccoe-migration-post-quantum-cryptography/
 - W3C WebAuthn Level 3: https://www.w3.org/TR/webauthn-3/
 - W3C WCAG 2.2: https://www.w3.org/TR/WCAG22/
 - EDPB Guidelines 4/2019 on Article 25: https://www.edpb.europa.eu/documents/guideline/guidelines-42019-on-article-25-data-protection-by-design-and-by-default_en

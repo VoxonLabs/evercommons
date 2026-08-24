@@ -61,6 +61,29 @@ Current architecture order:
 
 "Finish Shield" means reviewed and extractable boundaries first. It does not mean implementing recovery, CIE, SPID, EUDI Wallet, passport vendors, age estimation, public accounts, or a global unique-human system in this planning repo.
 
+## Cryptographic Agility Rule
+
+VoxonLabs should be ready for post-quantum cryptography without pretending the early proof is already quantum-safe.
+
+Before production-bound cryptography, identity, recovery, media storage, backups, or long-lived secrets, the design must include:
+
+- a cryptographic inventory
+- algorithm and key-rotation agility
+- explicit token/key versioning
+- retention analysis for "harvest now, decrypt later" risk
+- maintained libraries or platform cryptography only
+- a rollback and migration path
+- a clear statement of which parts are classical, hybrid post-quantum, or post-quantum
+
+Use NIST-standardized PQC only through reviewed protocols, maintained libraries, and platform support. Do not invent custom post-quantum identity, recovery, anonymous credential, zero-knowledge, or "one human" cryptography.
+
+Shield impact:
+
+- Local ES256 JWT assertions remain mock-only local proof.
+- Production Shield must preserve issuer, audience, `kid`, expiry, and key-rotation metadata so signing algorithms can change later.
+- WebAuthn/passkey cryptography follows the WebAuthn/FIDO/platform ecosystem; VoxonLabs must not fork it or replace it with a custom authenticator protocol.
+- PQC work is a Shield/infrastructure review item, not an EverCommons feature.
+
 ## Professional Product Gate
 
 Investor-visible maturity comes from evidence, not from making prototypes look like production.
@@ -277,6 +300,9 @@ Use these as baseline references and re-check them before implementation:
 - NIST SP 800-218 Secure Software Development Framework: https://csrc.nist.gov/pubs/sp/800/218/final
 - NIST SP 800-63-4 Digital Identity Guidelines: https://pages.nist.gov/800-63-4/
 - NIST SP 800-63B Authentication and Authenticator Management: https://pages.nist.gov/800-63-4/sp800-63b.html
+- NIST Post-Quantum Cryptography: https://www.nist.gov/pqc
+- NIST FIPS 203, 204, and 205 post-quantum standards: https://csrc.nist.gov/News/2024/postquantum-cryptography-fips-approved
+- NIST IR 8547, Transition to Post-Quantum Cryptography Standards: https://csrc.nist.gov/pubs/ir/8547/ipd
 - W3C WebAuthn Level 3: https://www.w3.org/TR/webauthn-3/
 - W3C Verifiable Credentials Data Model 2.0: https://www.w3.org/TR/vc-data-model/
 - OpenID for Verifiable Presentations 1.0: https://openid.net/specs/openid-4-verifiable-presentations-1_0.html
