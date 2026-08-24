@@ -41,8 +41,8 @@ This proof sets `androidx.benchmark.suppressErrors=EMULATOR` so the Macrobenchma
 
 | Benchmark | Metric | Sample |
 | --- | --- | --- |
-| coldStartup | timeToInitialDisplayMs median | ~692 ms |
-| feedScrollAfterContinue | frameDurationCpuMs P50 / P90 | ~76 / ~99 ms |
+| coldStartup | timeToInitialDisplayMs median | ~388 ms |
+| feedScrollAfterContinue | frameDurationCpuMs P50 / P90 | ~42 / ~56 ms |
 
 These exceed the 16 ms @ 60 fps budget on the emulator, as expected. Re-measure on a mid-range physical device before any product performance claim.
 
