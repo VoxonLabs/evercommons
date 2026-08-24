@@ -21,6 +21,7 @@ Roadmap: `docs/PHASED_BUILD_PLAN.md`. If this file and the roadmap disagree abou
 - First automated watcher: `.github/workflows/proof-checks.yml`.
 - Autonomous execution rules now live in `docs/AUTONOMOUS_EXECUTION_RULES.md` and are wired into `AGENTS.md`, `docs/ARCHITECTURE_GOVERNANCE.md`, `docs/ENGINEERING_SECURITY_BASELINE.md`, `docs/PHASED_BUILD_PLAN.md`, `docs/AI_SESSION_HANDOFF.md`, `.cursor/rules/`, and the PR template. Broad, strategic, UI/product, investor-facing, or autonomous-work requests must become bounded task packets before coding.
 - Cryptographic agility and post-quantum readiness are now governance requirements. Future production-bound identity, recovery, media storage, backups, secrets, and long-lived encrypted data need a crypto inventory, algorithm/key agility, and NIST PQC research before implementation. Do not hand-roll post-quantum cryptography.
+- OmniAuth was cloned to `/tmp/OmniAuth` and evaluated in `docs/OMNIAUTH_EVALUATION.md`. Decision: reference material only; do not import it into Shield or EverCommons. Low-risk prototype hardening was applied in the clone, but remaining mobile audit risk requires a deliberate React Native upgrade.
 - Recovery, public accounts, and provider login are **not implemented**.
 
 ## Uncommitted clusters
@@ -78,3 +79,5 @@ Verified this session:
 - `cd evercommons/media && npm test` passed.
 
 The working tree is still mixed; if saving, keep continuity/architecture, Android offline proof, and prototype/campaign changes as separate commits.
+
+OmniAuth handoff: the clone at `/tmp/OmniAuth` has local hardening changes for server-issued one-time challenges, replay rejection, safer PQC prototype wording, native password-retention cleanup, and mobile dependency reductions. It remains outside Voxon and must stay reference-only unless a future RFC, license review, cryptographic review, and Shield threat model approve a specific reuse path.
