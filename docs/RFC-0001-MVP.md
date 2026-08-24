@@ -20,13 +20,14 @@ The MVP should prove a narrow claim: a useful social product can combine mainstr
 
 ## MVP Capabilities
 
-- Accounts: email or passkey, profile, recovery, export, and deletion.
+- Accounts: passkey-first (Android Credential Manager when native), profile, recovery, export, and deletion. Email is not the preferred primary factor.
+- Client: Android-first native app (Kotlin + Jetpack Compose) for the closed pilot; web remains campaign + prototype (RFC-0005). iOS deferred until Mac/Xcode is available.
 - Shield assertions: verified adult human status should be consumed as a minimal signed assertion, not as raw identity-provider data.
-- Video: vertical upload, processing, adaptive playback, captions, thumbnails, and rights metadata.
-- Social graph: follow, unfollow, profile, likes, comments, blocks, and mutes.
-- Feeds: following, chronological, and one transparent discovery feed.
-- Creator tools: analytics, revenue shadow ledger, export, and sponsorship disclosure.
-- Advertising: direct-sold contextual sponsor cards with visible labels and "why this ad" explanations.
+- Creator onboarding & transition bridge: curated archive import (e.g. from GDPR/DMA export files or device storage) for top showcase posts during onboarding and a rate-limited 90-day transition window to support creator habit formation.
+- Video & media: vertical upload, processing, adaptive playback, captions, thumbnails, rights metadata, and optional historical archive engagement badges (display-only provenance labels with strict feed neutrality).
+- Social graph: follow, unfollow, profile, native likes, comments, blocks, and mutes.
+- Feeds: following, chronological, and one transparent discovery feed (isolated from external historical metrics).
+- Creator & business tools: analytics, revenue shadow ledger, export, sponsorship disclosure, and direct-sold contextual sponsor cards with visible labels, "why this ad" explanations, and Shield-verified organization assertions.
 - Safety: report, block, mute, explicit-content controls, moderation queue, decision reasons, appeals, and transparency notes.
 - Capacity: waitlist, invite cohorts, public capacity dashboard, and growth gates.
 - Transparency: public status, costs, provider concentration, and allocation dashboard.
@@ -38,6 +39,8 @@ The MVP should prove a narrow claim: a useful social product can combine mainstr
 - No commercial music catalog.
 - No minors in the first public pilot.
 - No raw passport, document image, selfie, date of birth, or address storage in the EverCommons application.
+- No automated live scraping, mirroring, or continuous syncing with external social networks.
+- No merging of third-party historical metrics into native EverCommons likes, reactions, or feed ranking algorithms.
 - No cryptocurrency or token.
 - No global federation write path.
 - No attempt to train a frontier foundation model.

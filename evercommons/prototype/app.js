@@ -38,6 +38,20 @@ const posts = [
     feeds: ["latest", "discovery"],
   },
   {
+    id: "ceramics",
+    title: "Studio ceramic series",
+    by: "sample.craft",
+    poster: "a",
+    caption: "Curated showcase post from creator's personal export archive.",
+    explicit: false,
+    feeds: ["following", "latest", "discovery"],
+    archiveOrigin: {
+      platform: "Instagram archive",
+      likes: "1.4k",
+      date: "2025-04",
+    },
+  },
+  {
     id: "restricted",
     title: "Restricted sample",
     by: "sample.safety",
@@ -127,6 +141,20 @@ function postCard(post) {
   const caption = document.createElement("p");
   caption.textContent = post.caption;
   article.append(poster, title, meta, caption);
+  if (post.archiveOrigin) {
+    const badge = document.createElement("div");
+    badge.className = "archive-badge";
+    const tag = document.createElement("span");
+    tag.className = "badge-tag";
+    tag.textContent = "Archived Post";
+    const detail = document.createTextNode(
+      ` Origin metric: ~${post.archiveOrigin.likes} likes on ${post.archiveOrigin.platform} (${post.archiveOrigin.date}) · `,
+    );
+    const note = document.createElement("small");
+    note.textContent = "Feed neutral";
+    badge.append(tag, detail, note);
+    article.append(badge);
+  }
   if (post.explicit && state.explicit === "blur") {
     const warn = document.createElement("p");
     warn.className = "warn";
@@ -180,6 +208,17 @@ document.querySelector("#upload-form").addEventListener("submit", (event) => {
     "Upload blocked. RFC-0003 requires private intake, processed derivatives, quotas, and a kill switch first.",
   );
 });
+
+const archiveForm = document.querySelector("#archive-form");
+if (archiveForm) {
+  archiveForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    setStatus(
+      "#archive-status",
+      "Archive import blocked in demo. Requires local client-side unpacking, selective showcase curation, and sanitized private intake slots.",
+    );
+  });
+}
 
 document.querySelector("#report-form").addEventListener("submit", (event) => {
   event.preventDefault();

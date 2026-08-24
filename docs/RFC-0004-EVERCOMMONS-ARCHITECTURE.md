@@ -12,21 +12,22 @@ It does **not** authorize:
 - paid Cloudflare Images storage or Stream
 - a launch date
 
-Local evidence already exists: Shield assertions (`shield/`), localhost passkeys (`shield/src/passkeys/`), a clickable UX shell (`evercommons/prototype/`), and an in-memory media stub (`evercommons/media/`). Recovery after device loss remains unimplemented on purpose.
+Local evidence already exists: Shield assertions (`shield/`), localhost passkeys (`shield/src/passkeys/`), a clickable UX shell (`evercommons/prototype/`), an in-memory media stub (`evercommons/media/`), and an Android client stack decision (`docs/RFC-0005-ANDROID-CLIENT-STACK.md`). Recovery after device loss remains unimplemented on purpose.
 
 ## 1. Repo split decision
 
 Keep the current `VoxonLabs/evercommons` repository as the public proof and prototype monorepo until a split trigger fires.
 
-That matches `docs/REPOSITORY_STRATEGY.md`. There is still no production user data, no production secrets in Git, and no public package.
+That matches `docs/REPOSITORY_STRATEGY.md` and `docs/ARCHITECTURE_GOVERNANCE.md`. There is still no production user data, no production secrets in Git, and no public package.
 
-Do **not** create empty product repositories now.
+Do **not** create empty product repositories now. Do prepare Shield for clean extraction: no application imports of Shield internals, no shared app/Shield database assumptions, and no provider-specific identity shortcut in EverCommons.
 
 Logical modules inside this repo today:
 
 ```text
 /                       VoxonLabs static site
 evercommons/            campaign site, UX prototype, media stub
+android/                offline native Compose proof (see RFC-0005)
 shield/                 local assertion + passkey proof
 docs/                   RFCs and operating rules
 ```
@@ -37,15 +38,18 @@ Split later, in this order, only when the trigger is real:
 | --- | --- |
 | `VoxonLabs/voxon-shield` | Shield has its own HTTPS API, JWKS, secrets, or deploy |
 | `VoxonLabs/evercommons` product app | EverCommons has a production API, database, or user sessions |
+| `VoxonLabs/evercommons-android` | Android app has Play signing, own CI, or production secrets |
 | `VoxonLabs/evercommons-media` | Real buckets, queues, or transcode workers exist |
 | `VoxonLabs/voxonlabs-site` | Parent site deploy/lifecycle diverges from the product |
 
 EverCommons must not import Shield internals or share a Shield database. Media zones must not live in the application database.
 
+Shield is the first likely split if production identity work begins. Provider choices such as CIE, SPID, eIDAS wallets, mobile driver's licenses, passport vendors, age-estimation vendors, passkey providers, or future wallets belong behind Shield provider adapters. EverCommons should only consume minimal, audience-scoped Shield assertions.
+
 ## 2. System shape
 
 ```text
-Browser (passkey session)
+Client (Android first; browser = prototype/site only)
     |
     |  audience = evercommons
     v
@@ -57,6 +61,8 @@ EverCommons API  ----Shield---->  short-lived assertion
     +--> capacity / cost ledger
 ```
 
+The first closed-pilot client is native Android (RFC-0005). The web prototype remains an interaction specification and campaign surface, not the production app.
+
 Login proves continuity. A Shield assertion proves derived adult-human eligibility. They stay separate HTTP steps, as in the localhost prototype.
 
 The application primary key for a person is the pairwise `sub` for audience `evercommons`, not an email, phone, or global VoxonLabs ID.
@@ -65,12 +71,12 @@ The application primary key for a person is the pairwise `sub` for audience `eve
 
 | Context | Owns | Must not own |
 | --- | --- | --- |
-| Shield | Assertions, passkeys, pairwise `sub`, revocation | EverCommons posts, follows, media bytes |
-| App API | Handles, profiles, graph, post metadata, sessions for this app | Raw identity documents, raw uploads |
+| Shield | Assertions, passkeys, pairwise `sub`, revocation, org verification | EverCommons posts, follows, media bytes |
+| App API | Handles, profiles, graph, post metadata (including display-only `archived_origin_stats`), sessions | Raw identity documents, raw uploads |
 | Media | Bytes, zones, transcode, purge | Social graph, Shield keys |
 | Safety | Reports, appeals, block/mute, explicit defaults | A global trust score |
-| Capacity | Quotas, kill switch, cost samples | User tracking graphs |
-| Creator ledger | Shadow revenue, sponsor disclosure | Live payouts or tax IDs in v1 |
+| Capacity | Quotas, kill switch, cost samples, import rate limits | User tracking graphs |
+| Creator & Business | Shadow revenue, sponsor disclosure, contextual sponsor cards, "why this ad" | Tracking pixels, behavioral cookies, live payouts/tax IDs in v1 |
 
 ## 4. App backend (pilot)
 
@@ -82,16 +88,16 @@ Minimum API groups:
 - Me: handle, profile, export, delete
 - Graph: follow, unfollow, block, mute
 - Feed: following, latest, discovery
-- Posts: metadata create after media is `ready_private` or later
+- Posts: metadata create after media is `ready_private` or later (supports optional non-indexed `archived_origin_stats`)
 - Reports / appeals
-- Creator shadow stats
+- Creator shadow stats & business sponsor cards
 - Capacity dashboard (public, non-personal)
 
 Authorization is server-side. Every mutating route answers: subject, audience `evercommons`, action, policy, and a loggable non-sensitive outcome.
 
 Input is validated at the API. SQL is parameterized. Cookies are host-only, `Secure`, `HttpOnly`, `SameSite` as designed in a later production-session review. Localhost prototype cookies must not be reused on `voxonlabs.com`.
 
-No private messaging. No live streaming. No password-first login.
+No private messaging. No live streaming. No password-first login. No automated live scraping or mirroring of external platforms.
 
 ## 5. Feed
 
@@ -100,6 +106,8 @@ Pilot scale is small enough for **query-on-read**:
 - Following: posts from accounts the subject follows, `created_at` descending
 - Latest: all eligible published posts, `created_at` descending
 - Discovery: published posts plus labeled contextual sponsor cards; ranking rules must be public text, not a hidden engagement model
+
+**Feed neutrality guarantee:** External historical metrics (e.g. past likes on imported archival posts) are strictly excluded from feed queries and ranking algorithms. Feed ordering is strictly organic and based on native EverCommons signals.
 
 Discovery must not use Shield claims beyond eligibility, must not use other apps' data, and must not build a hidden behavioral profile.
 
@@ -121,6 +129,16 @@ Happy path for a future closed pilot, not for today:
 8. A moderator (or an explicit closed-pilot auto-publish policy, if later approved) may publish the **derivative** only.
 
 The local stub in `evercommons/media/` already encodes this state machine. Do not skip it.
+
+### 6.1 Curated Archive Import & 90-Day Transition Bridge
+
+To support creator migration without full mirroring, scraping, or cost explosion:
+
+1. **Client-side archive parsing:** Users unpack their data export (e.g. Instagram/GDPR archive) locally in a sandboxed client process (Android app or trusted browser demo). No raw multi-gigabyte ZIP files are uploaded to the backend. The current Android offline proof keeps archive parsing **disabled**.
+2. **Selective curation:** The creator selects a finite set of top showcase posts (e.g. 5–15 items) rather than performing an uncurated bulk dump.
+3. **Transition window:** For the first 90 days after onboarding, creators receive an import allowance quota to gradually migrate key past work, building the habit of using EverCommons as their primary home.
+4. **Sanitized intake:** Each selected media item is stripped of EXIF/GPS metadata on-device or in private intake, validated, transcoded, and stored like any standard upload.
+5. **Historical engagement badge:** Imported posts may include display-only provenance metadata (`archived_origin_stats: { platform: "instagram", original_likes: 1240, archived_at: "2026-06-01" }`). This is displayed as a subtle archival badge in the UI and is strictly decoupled from native likes and feed ranking.
 
 ## 7. Media processing and storage
 
@@ -225,6 +243,14 @@ Controls: quotas, project cap, duration/resolution limits, kill switch, capacity
 
 Residual: a misconfigured public R2 bucket or a cache that never purges can still cost reputation even if R2 egress is free.
 
+### 11.5 Archive import abuse and metric spoofing
+
+Attacker uploads oversized data archive dumps, bombs the unpacker with zip bombs, or claims fraudulent external engagement numbers (e.g. spoofing millions of likes).
+
+Controls: archive parsing happens strictly client-side in a sandboxed client (no server ZIP extraction); the Android offline proof keeps import disabled; individual media items go through standard one-time intake slots under normal user upload quotas; historical metrics are display-only, labeled as self-reported archive provenance, and strictly excluded from feed discovery and ranking.
+
+Residual: self-reported archive numbers cannot be cryptographically verified against third-party platforms. Clear UI provenance labeling is required.
+
 ## 12. Security baseline map
 
 | Baseline rule | Planned control |
@@ -240,6 +266,8 @@ Residual: a misconfigured public R2 bucket or a cache that never purges can stil
 | Threat model before public accounts/uploads | This RFC + RFC-0002 + RFC-0003; public uploads still off |
 | Never serve raw uploads on public CDN | Media zones + tests |
 | Reasoned, appealable safety | Report/appeal states; no global score |
+| Archive import isolation | Client-side unpack, standard media intake quotas, display-only badge |
+| Feed neutrality | Historical external metrics decoupled from feed queries and ranking |
 
 WCAG 2.2 remains the UX baseline for any future app UI.
 
@@ -255,9 +283,10 @@ WCAG 2.2 remains the UX baseline for any future app UI.
 ## 14. Build order after this RFC
 
 1. Public architecture review (this RFC + GitHub issue)
-2. Do not open D1/R2/Stream
-3. Optional: portable schema sketches in-repo, still empty of user data
-4. Closed adult pilot remains Phase 6 and stays blocked on recovery, legal/privacy review, and tested media purge
+2. Android client stack (RFC-0005) offline proof; no accounts or uploads
+3. Do not open D1/R2/Stream
+4. Optional: portable schema sketches in-repo, still empty of user data
+5. Closed adult pilot remains Phase 6 and stays blocked on recovery, legal/privacy review, and tested media purge
 
 ## Open questions
 
@@ -265,12 +294,14 @@ WCAG 2.2 remains the UX baseline for any future app UI.
 - Which of path A or path B is used for the first closed pilot
 - Who staffs human moderation for 100 users
 - Legal basis and process for illegal-content preservation
+- When (if ever) iOS starts, given no Mac today
 
 ## References
 
 - `docs/RFC-0001-MVP.md`
 - `docs/RFC-0002-VOXON-SHIELD.md`
 - `docs/RFC-0003-MEDIA-CDN-SECURITY.md`
+- `docs/RFC-0005-ANDROID-CLIENT-STACK.md`
 - `docs/ENGINEERING_SECURITY_BASELINE.md`
 - `docs/REPOSITORY_STRATEGY.md`
 - `evercommons/media/THREAT_MODEL.md`

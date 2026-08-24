@@ -87,7 +87,7 @@
       </section>
 
       <section id="view-upload" class="view" hidden>
-        <h1>Upload</h1>
+        <h1>Upload and import</h1>
         <p>Public uploads are closed until media, quarantine, quotas, and moderation gates exist.</p>
         <form id="upload-form" action="#" method="post">
           <label for="clip">Vertical clip</label>
@@ -99,6 +99,15 @@
           <button class="button primary" type="submit">Upload</button>
         </form>
         <p id="upload-status" class="note" role="status">Choose a file is disabled. Nothing leaves this page.</p>
+
+        <h2>Curated archive import (90-day bridge)</h2>
+        <p>Migrate your top 5–15 showcase posts from your personal export archive (GDPR/DMA zip). Client-side unpack only; no bulk backend uploads.</p>
+        <form id="archive-form" action="#" method="post">
+          <label for="archive-file">Data archive export (.zip)</label>
+          <input id="archive-file" name="archive" type="file" accept=".zip" disabled />
+          <button class="button" type="submit">Scan archive locally</button>
+        </form>
+        <p id="archive-status" class="note" role="status">Archive scanner disabled in demo. Zero backend uploads.</p>
       </section>
 
       <section id="view-profile" class="view" hidden>
