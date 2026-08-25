@@ -39,7 +39,7 @@ For now, do not buy another domain. The zero-cost rule wins.
 Recommended paths:
 
 - `voxonlabs.com` for the parent homepage.
-- `voxonlabs.com/evercommons` for the public campaign page.
+- `voxonlabs.com/evercommons` for the public project page.
 - `docs/RFC-0002-VOXON-SHIELD.md` for the Shield architecture while the project remains zero-cost and pre-code.
 - `github.com/<org>/evercommons` for the public repository.
 - `github.com/VoxonLabs/evercommons` as the assumed repository URL in the current static site.

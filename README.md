@@ -20,7 +20,7 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 - `AGENTS.md` - required operating protocol for future AI coding sessions.
 - `docs/CURRENT_STATE.md` - living snapshot: phase, next safe step, blockers. Read this first in every new session.
 - `.cursor/rules/` - always-on Cursor rules for the session loop and stop gates.
-- `evercommons/` - static EverCommons campaign site; no build step, backend, or paid service required.
+- `evercommons/` - static EverCommons project site; no build step, backend, or paid service required.
 - `evercommons/prototype/` - clickable Social UX shell. No real accounts or uploads.
 - `evercommons/media/` - local media pipeline stub. Kill switch on. No public storage.
 - `index.html` - VoxonLabs parent homepage.

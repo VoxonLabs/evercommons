@@ -25,7 +25,7 @@ Partners must:
 6. Notify security incidents promptly and cooperate in remediation and user or regulator obligations.
 7. Provide verifiable usage, availability, and contribution data for pool calculations.
 8. Not claim ownership of users, social graph, protocol, recommendation policy, or community governance.
-9. Not condition service on political, advertising, or algorithmic influence outside the published contract.
+9. Not condition service on advertising, algorithmic influence, or private leverage outside the published contract.
 10. Support termination, deletion verification, and public status correction when the relationship ends.
 
 ## Recognition and Payment
