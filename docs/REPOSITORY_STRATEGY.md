@@ -83,6 +83,8 @@ Shared infrastructure is allowed only when it does not merge user data or securi
 
 Voxon Shield is shared infrastructure, but it must not become a surveillance hub.
 
+Voxon Shield is the identity/assertion boundary for applications. It is separate from `VoxonLabs/shield-vault`, which is the password manager project and follows its own repository lifecycle.
+
 Shield can provide:
 
 - Signed minimal assertions.

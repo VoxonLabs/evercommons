@@ -4,6 +4,8 @@ Status: working rule. Do not create `VoxonLabs/voxon-shield` until a split trigg
 
 This is the concrete answer to "shouldn't Shield be another repo?" Yes, that is the target. No, not today. The local mock in `shield/` stays in this planning repo while it remains mock-only. Splitting now would add an empty public surface without secrets, CI, or a real API, which looks busier rather than more mature.
 
+This checklist applies to Voxon Shield, the identity/assertion boundary. It does not apply to `shield-vault`, the separate password manager repository.
+
 Use this file with `docs/REPOSITORY_STRATEGY.md` and `docs/ARCHITECTURE_GOVERNANCE.md`.
 
 ## Do not split yet

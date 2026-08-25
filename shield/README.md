@@ -2,6 +2,8 @@
 
 Status: mock-only local prototype. Not a production identity system.
 
+This is Voxon Shield, a future identity/assertion boundary for applications. It is not Shield Vault, the separate password manager project.
+
 This directory is the Phase 1 evidence for `docs/RFC-0002-VOXON-SHIELD.md`: a signed assertion schema, a local mock issuer, and a verifier that accepts only the right issuer, audience, signature, expiry, and derived claims.
 
 EverCommons never receives name, date of birth, address, document numbers, selfies, or provider packets. If those fields appear, verification fails.
