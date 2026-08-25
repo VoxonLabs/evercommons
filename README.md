@@ -55,6 +55,22 @@ This keeps **VoxonLabs** as the parent lab/studio identity and **EverCommons** a
 - `SECURITY.md` - security reporting and data-handling baseline.
 - `CONTRIBUTING.md` - how early contributors can help.
 
+## Licensing
+
+Unless a file says otherwise:
+
+- Software source code, scripts, schemas, tests, and configuration files are
+  licensed under GNU Affero General Public License v3.0 only
+  (`AGPL-3.0-only`). See `LICENSE`.
+- Documentation, charters, RFCs, manifesto text, public research notes, and
+  non-code public written materials are licensed under Creative Commons
+  Attribution 4.0 International (`CC-BY-4.0`). See `LICENSE-DOCS`.
+- Voxon Labs, VoxonLabs.com, EverCommons, Voxon Shield, logos, domain names,
+  product names, visual identity, and trade dress are not licensed for reuse.
+  See `TRADEMARKS.md`.
+
+Commercial licensing and project contact: `https://VoxonLabs.com`.
+
 ## Local preview
 
 Open this file directly in a browser:
