@@ -16,6 +16,6 @@
   "dependencies": {
     "@simplewebauthn/browser": "13.3.0",
     "@simplewebauthn/server": "13.3.2",
-    "jose": "6.2.10"
+    "jose": "6.2.12"
   }
 }
